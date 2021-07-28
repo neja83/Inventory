@@ -28,11 +28,13 @@ class GameScene: SKScene {
             let shield = Item(id: 2, size: itemSize, name: "shield")
             let knife  = Item(id: 3, size: itemSize, name: "knife")
 
-//          Init inventory
+            // Init inventory
 
             let items = [sword, shield, knife]
 
-            let inventory = Inventory(view: v, size: InventorySize(lines: 2, columns: 4))
+            let config = InventoryConfiguration()
+            
+            let inventory = Inventory(view: v, configuration: config)
             inventory.save(items: items)
             addChild(inventory)
             inventory.position = CGPoint(x: 0, y: 0)

@@ -46,9 +46,9 @@ class Cell: SKSpriteNode {
         }
     }
     
-    init(size: CGSize, radius: CGFloat) {
+    init(size: CGSize, radius: CGFloat, type: CellType) {
         visualNode = SKShapeNode(rectOf: size, cornerRadius: radius)
-        
+        self.type = type
         super.init(texture: nil, color: .clear, size: size)
         
         self.visualNode.strokeColor = colorWithoutItem

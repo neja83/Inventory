@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-extension BackgroundNode {
+extension MeshLayer {
     
     // First tap on cell
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

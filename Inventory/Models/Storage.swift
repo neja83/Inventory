@@ -12,7 +12,7 @@ class Storage {
     
     private var data: [Cell] = []
     private let zPositionStep: CGFloat = 5 // TODO take it from plis
-    var backgroundNode: BackgroundNode?
+    var presenter: MeshLayerPresenter?
     
     private init() {}
     static let share: Storage = {
@@ -21,17 +21,9 @@ class Storage {
         return instance
     }()
     
-    // Setup
-    func setup(size: CGSize, parent: Inventory) {
-        let backgroundNode = BackgroundNode(size: size)
-        self.backgroundNode = backgroundNode
-        parent.addChild(backgroundNode)
-    }
-    
     // MARK: - Cells
     func add(cell: Cell) {
-        data.append(cell)
-        backgroundNode?.addChild(cell)
+        data.append(cell) 
     }
     
     // MARK: - Items
@@ -39,7 +31,7 @@ class Storage {
         if let cell = firstFreeCell() {
             cell.link(with: item)
             
-            self.backgroundNode?.addChild(item)
+            self.presenter?.addElement(element: item)
             item.position = cell.position
             item.zPosition = cell.zPosition + zPositionStep
         }

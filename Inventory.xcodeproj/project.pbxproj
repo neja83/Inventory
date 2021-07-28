@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AD001DB326ACBA8F0010E0FF /* BackgroundNodeTouches.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD001DB226ACBA8F0010E0FF /* BackgroundNodeTouches.swift */; };
-		AD001DB526AF5DBF0010E0FF /* BackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD001DB426AF5DBF0010E0FF /* BackgroundNode.swift */; };
+		AD001DB326ACBA8F0010E0FF /* MeshLayerTouches.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD001DB226ACBA8F0010E0FF /* MeshLayerTouches.swift */; };
+		AD001DB526AF5DBF0010E0FF /* MeshLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD001DB426AF5DBF0010E0FF /* MeshLayer.swift */; };
 		ADDEA34326A8C2050010DA6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDEA34226A8C2050010DA6E /* AppDelegate.swift */; };
 		ADDEA34526A8C2050010DA6E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = ADDEA34426A8C2050010DA6E /* GameScene.sks */; };
 		ADDEA34726A8C2050010DA6E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = ADDEA34626A8C2050010DA6E /* Actions.sks */; };
@@ -20,11 +20,13 @@
 		ADDEA35B26AA1ECD0010DA6E /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDEA35A26AA1ECD0010DA6E /* Cell.swift */; };
 		ADDEA35D26AA22610010DA6E /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDEA35C26AA22610010DA6E /* Storage.swift */; };
 		ADDEA36026AB5FDA0010DA6E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDEA35F26AB5FDA0010DA6E /* Item.swift */; };
+		ADF460E226B1DE1000FFD368 /* InventoryConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460E126B1DE1000FFD368 /* InventoryConfiguration.swift */; };
+		ADF460E926B1F17D00FFD368 /* InventoryGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460E826B1F17D00FFD368 /* InventoryGestures.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AD001DB226ACBA8F0010E0FF /* BackgroundNodeTouches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundNodeTouches.swift; sourceTree = "<group>"; };
-		AD001DB426AF5DBF0010E0FF /* BackgroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundNode.swift; sourceTree = "<group>"; };
+		AD001DB226ACBA8F0010E0FF /* MeshLayerTouches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshLayerTouches.swift; sourceTree = "<group>"; };
+		AD001DB426AF5DBF0010E0FF /* MeshLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshLayer.swift; sourceTree = "<group>"; };
 		ADDEA33F26A8C2050010DA6E /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDEA34226A8C2050010DA6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADDEA34426A8C2050010DA6E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -38,6 +40,8 @@
 		ADDEA35A26AA1ECD0010DA6E /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		ADDEA35C26AA22610010DA6E /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		ADDEA35F26AB5FDA0010DA6E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		ADF460E126B1DE1000FFD368 /* InventoryConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryConfiguration.swift; sourceTree = "<group>"; };
+		ADF460E826B1F17D00FFD368 /* InventoryGestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryGestures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +58,8 @@
 		AD001DB126ACB1180010E0FF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AD001DB226ACBA8F0010E0FF /* BackgroundNodeTouches.swift */,
+				AD001DB226ACBA8F0010E0FF /* MeshLayerTouches.swift */,
+				ADF460E826B1F17D00FFD368 /* InventoryGestures.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -78,6 +83,7 @@
 		ADDEA34126A8C2050010DA6E /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				ADF460E326B1E66500FFD368 /* Errors */,
 				ADDEA35926AA1A6E0010DA6E /* Models */,
 				AD001DB126ACB1180010E0FF /* Extensions */,
 				ADDEA34226A8C2050010DA6E /* AppDelegate.swift */,
@@ -96,12 +102,20 @@
 			isa = PBXGroup;
 			children = (
 				ADDEA35726AA067C0010DA6E /* Inventory.swift */,
+				ADF460E126B1DE1000FFD368 /* InventoryConfiguration.swift */,
 				ADDEA35A26AA1ECD0010DA6E /* Cell.swift */,
 				ADDEA35C26AA22610010DA6E /* Storage.swift */,
 				ADDEA35F26AB5FDA0010DA6E /* Item.swift */,
-				AD001DB426AF5DBF0010E0FF /* BackgroundNode.swift */,
+				AD001DB426AF5DBF0010E0FF /* MeshLayer.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		ADF460E326B1E66500FFD368 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,11 +190,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADDEA35826AA067D0010DA6E /* Inventory.swift in Sources */,
-				AD001DB526AF5DBF0010E0FF /* BackgroundNode.swift in Sources */,
+				AD001DB526AF5DBF0010E0FF /* MeshLayer.swift in Sources */,
 				ADDEA34926A8C2050010DA6E /* GameScene.swift in Sources */,
-				AD001DB326ACBA8F0010E0FF /* BackgroundNodeTouches.swift in Sources */,
+				ADF460E926B1F17D00FFD368 /* InventoryGestures.swift in Sources */,
+				AD001DB326ACBA8F0010E0FF /* MeshLayerTouches.swift in Sources */,
 				ADDEA35B26AA1ECD0010DA6E /* Cell.swift in Sources */,
 				ADDEA34B26A8C2050010DA6E /* GameViewController.swift in Sources */,
+				ADF460E226B1DE1000FFD368 /* InventoryConfiguration.swift in Sources */,
 				ADDEA36026AB5FDA0010DA6E /* Item.swift in Sources */,
 				ADDEA34326A8C2050010DA6E /* AppDelegate.swift in Sources */,
 				ADDEA35D26AA22610010DA6E /* Storage.swift in Sources */,
