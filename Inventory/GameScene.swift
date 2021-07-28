@@ -41,10 +41,11 @@ class GameScene: SKScene {
             
             // Next gen
             
-            let anotherNode = SKShapeNode(rectOf: CGSize(width: 50, height: 50), cornerRadius: 2)
-            anotherNode.strokeColor = .cyan
-            anotherNode.position = CGPoint(x: 0 , y: 200)
-            addChild(anotherNode)
+            let anotherCell = Cell(size: CGSize(width: 50, height: 50), radius: 2, type: .Outer)
+            anotherCell.name = "Outer Cell"
+            anotherCell.position = CGPoint(x: 0 , y: 200)
+            inventory.mesh.addChild(anotherCell)
+            //addChild(anotherCell)
         }
     }
     

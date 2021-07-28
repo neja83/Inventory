@@ -32,6 +32,7 @@ class Cell: SKSpriteNode {
             visualNode.fillColor = .clear
         }
     }
+    private(set) var type: CellType
     
     // TODO private and getter for this
     var isEmpty:  Bool = true
@@ -75,4 +76,10 @@ class Cell: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+
+enum CellType: String {
+    case Inner
+    case Outer
 }
