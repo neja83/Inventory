@@ -22,6 +22,10 @@
 		ADDEA36026AB5FDA0010DA6E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDEA35F26AB5FDA0010DA6E /* Item.swift */; };
 		ADF460E226B1DE1000FFD368 /* InventoryConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460E126B1DE1000FFD368 /* InventoryConfiguration.swift */; };
 		ADF460E926B1F17D00FFD368 /* InventoryGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460E826B1F17D00FFD368 /* InventoryGestures.swift */; };
+		ADF460EE26B341FB00FFD368 /* EInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460ED26B341FB00FFD368 /* EInventory.swift */; };
+		ADF460F026B3441D00FFD368 /* VisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460EF26B3441D00FFD368 /* VisualComponent.swift */; };
+		ADF460F226B350BF00FFD368 /* MeshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460F126B350BF00FFD368 /* MeshComponent.swift */; };
+		ADF460F426B35AE300FFD368 /* ColorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460F326B35AE300FFD368 /* ColorComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		ADDEA35F26AB5FDA0010DA6E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		ADF460E126B1DE1000FFD368 /* InventoryConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryConfiguration.swift; sourceTree = "<group>"; };
 		ADF460E826B1F17D00FFD368 /* InventoryGestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryGestures.swift; sourceTree = "<group>"; };
+		ADF460ED26B341FB00FFD368 /* EInventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EInventory.swift; sourceTree = "<group>"; };
+		ADF460EF26B3441D00FFD368 /* VisualComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualComponent.swift; sourceTree = "<group>"; };
+		ADF460F126B350BF00FFD368 /* MeshComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshComponent.swift; sourceTree = "<group>"; };
+		ADF460F326B35AE300FFD368 /* ColorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,7 @@
 		ADDEA34126A8C2050010DA6E /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				ADF460EA26B33F0A00FFD368 /* ECS */,
 				ADF460E326B1E66500FFD368 /* Errors */,
 				ADDEA35926AA1A6E0010DA6E /* Models */,
 				AD001DB126ACB1180010E0FF /* Extensions */,
@@ -116,6 +125,33 @@
 			children = (
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		ADF460EA26B33F0A00FFD368 /* ECS */ = {
+			isa = PBXGroup;
+			children = (
+				ADF460EC26B33FD500FFD368 /* Components */,
+				ADF460EB26B33FC100FFD368 /* Entities */,
+			);
+			path = ECS;
+			sourceTree = "<group>";
+		};
+		ADF460EB26B33FC100FFD368 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				ADF460ED26B341FB00FFD368 /* EInventory.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		ADF460EC26B33FD500FFD368 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ADF460EF26B3441D00FFD368 /* VisualComponent.swift */,
+				ADF460F126B350BF00FFD368 /* MeshComponent.swift */,
+				ADF460F326B35AE300FFD368 /* ColorComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,7 +226,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADDEA35826AA067D0010DA6E /* Inventory.swift in Sources */,
+				ADF460F026B3441D00FFD368 /* VisualComponent.swift in Sources */,
+				ADF460F226B350BF00FFD368 /* MeshComponent.swift in Sources */,
 				AD001DB526AF5DBF0010E0FF /* MeshLayer.swift in Sources */,
+				ADF460EE26B341FB00FFD368 /* EInventory.swift in Sources */,
 				ADDEA34926A8C2050010DA6E /* GameScene.swift in Sources */,
 				ADF460E926B1F17D00FFD368 /* InventoryGestures.swift in Sources */,
 				AD001DB326ACBA8F0010E0FF /* MeshLayerTouches.swift in Sources */,
@@ -200,6 +239,7 @@
 				ADDEA36026AB5FDA0010DA6E /* Item.swift in Sources */,
 				ADDEA34326A8C2050010DA6E /* AppDelegate.swift in Sources */,
 				ADDEA35D26AA22610010DA6E /* Storage.swift in Sources */,
+				ADF460F426B35AE300FFD368 /* ColorComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
