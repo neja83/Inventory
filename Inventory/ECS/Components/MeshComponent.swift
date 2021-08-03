@@ -90,6 +90,29 @@ class MeshComponent: GKComponent, Mesh {
         }
     }
     
+    public func sort(){
+        self.mesh = self.mesh.sorted { second, first in
+            if (first.isEmpty && !second.isEmpty) {
+                
+                let firstPosition = first.position
+                let secondPosition = second.position
+                
+                first.position = secondPosition
+                second.position = firstPosition
+                
+                return true
+            }
+            if (!first.isEmpty && second.isEmpty) {
+                return false
+            }
+            if (first.isEmpty && second.isEmpty) {
+                return false
+            }
+            return false
+        }
+        // TODO sort by item name
+    }
+    
     private func setup() {
         let cellSize = self.calculateCellSize(for: background.calculateAccumulatedFrame().size)
         
@@ -99,6 +122,7 @@ class MeshComponent: GKComponent, Mesh {
     private func create(for cellSize: CGSize) {
         let backgroundSize = background.calculateAccumulatedFrame().size
         let mesh = EInventorySetting.cellNumbers
+        var index = 0
         
         // Up left corner Y coordinate of column
         var positionY: CGFloat = backgroundSize.height / 2 // - configuration.padding
@@ -113,17 +137,18 @@ class MeshComponent: GKComponent, Mesh {
             for _ in 1...mesh.columns {
                 let diffX = positionX + cellSize.width / 2
                 
-                self.addCell(at: CGPoint(x: diffX, y: diffY), with: cellSize)
+                self.addCell(at: CGPoint(x: diffX, y: diffY), with: cellSize, index: index)
                 
                 positionX = positionX + cellSize.width // + configuration.padding
+                index += 1
             }
             positionY = positionY - cellSize.height // - configuration.padding
         }
         
     }
     
-    private func addCell(at position: CGPoint, with cellSize: CGSize){
-        let cell = Cell(size: cellSize, radius: 2, type: .Inner)
+    private func addCell(at position: CGPoint, with cellSize: CGSize, index: Int){
+        let cell = Cell(size: cellSize, radius: 2, type: .Inner, index: index)
         
         cell.position = CGPoint(x: position.x, y: position.y)
         cell.zPosition = background.zPosition + 5

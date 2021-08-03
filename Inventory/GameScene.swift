@@ -38,13 +38,14 @@ class GameScene: SKScene {
         
         let nodes = self.nodes(at: position)
         print("scene")
-//        for node in nodes {
-//            if let inv = manager.findEntity(with: node) {
-//                if let storage = inv.component(ofType: StorageInventoryComponent.self) {
-//                    print(storage.data)
-//                }
-//            }
-//        }
+
+        for node in nodes {
+            if let inv = manager.findEntity(with: node) {
+                if let controlPanel = inv.component(ofType: ControlPanelComponent.self) {
+                    controlPanel.onClick()
+                }
+            }
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {

@@ -34,6 +34,15 @@ class Cell: SKSpriteNode {
     }
     private(set) var type: CellType
     
+    // Change item position if has it
+    override var position: CGPoint {
+        didSet {
+            if let savedItem = item {
+                savedItem.position = position
+            }
+        }
+    }
+    
     // TODO private and getter for this
     var isEmpty:  Bool = true
     var isSelect: Bool = false {
@@ -47,11 +56,11 @@ class Cell: SKSpriteNode {
         }
     }
     
-    init(size: CGSize, radius: CGFloat, type: CellType) {
+    init(size: CGSize, radius: CGFloat, type: CellType, index: Int) {
         visualNode = SKShapeNode(rectOf: size, cornerRadius: radius)
         self.type = type
         super.init(texture: nil, color: .clear, size: size)
-        self.name = "Cell"
+        self.name = "Cell \(index)"
         self.visualNode.strokeColor = colorWithoutItem
         self.addChild(visualNode)
     }

@@ -17,11 +17,16 @@ class EInventory: GKEntity {
         let visulComponent = VisualComponent(size: size, radius: EInventorySetting.radius, color: EInventorySetting.bodyColor)
         let meshComponent  = MeshComponent(size: size)
         let storage = StorageInventoryComponent(items: nil)
+        let controlPanel = ControlPanelComponent(size: CGSize(width: 60, height: 60))
         
         // Regestry of components
         self.addComponent(visulComponent)
         self.addComponent(meshComponent)
         self.addComponent(storage)
+        self.addComponent(controlPanel)
+        
+        // Component settings
+        controlPanel.action = meshComponent.sort
     }
     
     required init?(coder: NSCoder) {

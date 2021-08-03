@@ -29,6 +29,7 @@
 		ADF460FA26B736B200FFD368 /* GKEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460F926B736B200FFD368 /* GKEntity.swift */; };
 		ADF460FC26B888B400FFD368 /* StorageInventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460FB26B888B400FFD368 /* StorageInventoryComponent.swift */; };
 		ADF460FE26B890E300FFD368 /* MeshBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460FD26B890E300FFD368 /* MeshBackground.swift */; };
+		ADF4610026B9D81F00FFD368 /* ControlPanelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460FF26B9D81F00FFD368 /* ControlPanelComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		ADF460F926B736B200FFD368 /* GKEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKEntity.swift; sourceTree = "<group>"; };
 		ADF460FB26B888B400FFD368 /* StorageInventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageInventoryComponent.swift; sourceTree = "<group>"; };
 		ADF460FD26B890E300FFD368 /* MeshBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshBackground.swift; sourceTree = "<group>"; };
+		ADF460FF26B9D81F00FFD368 /* ControlPanelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				ADF460F126B350BF00FFD368 /* MeshComponent.swift */,
 				ADF460FB26B888B400FFD368 /* StorageInventoryComponent.swift */,
 				ADF460FD26B890E300FFD368 /* MeshBackground.swift */,
+				ADF460FF26B9D81F00FFD368 /* ControlPanelComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 			files = (
 				ADDEA35826AA067D0010DA6E /* Inventory.swift in Sources */,
 				ADF460F026B3441D00FFD368 /* VisualComponent.swift in Sources */,
+				ADF4610026B9D81F00FFD368 /* ControlPanelComponent.swift in Sources */,
 				ADF460F226B350BF00FFD368 /* MeshComponent.swift in Sources */,
 				AD001DB526AF5DBF0010E0FF /* MeshLayer.swift in Sources */,
 				ADF460FE26B890E300FFD368 /* MeshBackground.swift in Sources */,
