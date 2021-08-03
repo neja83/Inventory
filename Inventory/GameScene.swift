@@ -10,32 +10,25 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var entities = [GKEntity]()
-    
-    let systems: [GKComponentSystem<GKComponent>] = {
-        var visualComponentObject = GKComponentSystem(componentClass: VisualComponent.self)
-        
-        return [visualComponentObject]
-    }()
+    private let manager: EntityManager = EntityManager()
     
     private var lastUpdateTime : TimeInterval = 0
      
     override func sceneDidLoad() {
-        
+        manager.scene = self
     }
     
     override func didMove(to view: SKView) {
         let inventoryAsEntity = EInventory(size: CGSize(width: 200, height: 100))
         
-        for system in systems {
-            system.addComponent(foundIn: inventoryAsEntity)
-        }
+        manager.add(entity: inventoryAsEntity)
         
-        if let component = inventoryAsEntity.component(ofType: VisualComponent.self) {
-            self.addChild(component.node)
+        if let storage = inventoryAsEntity.component(ofType: StorageInventoryComponent.self) {
+            let sword = Item(id: 4, size: CGSize(width: 66, height: 33), name: "Sword")
+            let shield = Item(id: 6, size: CGSize(width: 66, height: 33), name: "Shield")
+            
+            storage.add(items: [sword, shield])
         }
-        
-        entities.append(inventoryAsEntity)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -44,21 +37,14 @@ class GameScene: SKScene {
         let position = touch.location(in: self)
         
         let nodes = self.nodes(at: position)
-        
-        for node in nodes {
-            print(node)
-            
-            if let inventory = entities.first(
-                where: { $0.component(ofType: VisualComponent.self)!.node.isEqual(to: node)}) {
-                let colorComponent = ColorComponent(color: .magenta)
-                inventory.addComponent(colorComponent)
-            }
-            
-//            if let ent = node as? EInventory {
-//                let colorComponent = ColorComponent(color: .magenta)
-//                ent.addComponent(colorComponent)
+        print("scene")
+//        for node in nodes {
+//            if let inv = manager.findEntity(with: node) {
+//                if let storage = inv.component(ofType: StorageInventoryComponent.self) {
+//                    print(storage.data)
+//                }
 //            }
-        }
+//        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -73,9 +59,7 @@ class GameScene: SKScene {
         let dt = currentTime - self.lastUpdateTime
         
         // Update systems
-        for sistem in systems {
-            sistem.update(deltaTime: dt)
-        }
+        manager.update(dt: dt)
         
         self.lastUpdateTime = currentTime
     }

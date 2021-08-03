@@ -24,7 +24,4 @@ class VisualComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func update(deltaTime seconds: TimeInterval) {
-//        print("Update Component")
-    }
 }

@@ -10,24 +10,32 @@ import GameplayKit
 
 class EInventory: GKEntity {
     
-    // Settings
-    private let radius: CGFloat = 5
-    private let bodyColor: UIColor = .orange
-    
     init(size: CGSize) {
         super.init()
         
         // Components
-        let visulComponent = VisualComponent(size: size, radius: radius, color: bodyColor)
-        let meshComponent  = MeshComponent()
-        
+        let visulComponent = VisualComponent(size: size, radius: EInventorySetting.radius, color: EInventorySetting.bodyColor)
+        let meshComponent  = MeshComponent(size: size)
+        let storage = StorageInventoryComponent(items: nil)
         
         // Regestry of components
         self.addComponent(visulComponent)
         self.addComponent(meshComponent)
+        self.addComponent(storage)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+struct EInventorySetting {
+    
+    // EInventory
+    static let radius: CGFloat = 5
+    static let bodyColor: UIColor = .orange
+    
+    // Mesh
+    static let cellNumbers: InventorySize = InventorySize(lines: 3, columns: 3)
+}
+

@@ -25,7 +25,10 @@
 		ADF460EE26B341FB00FFD368 /* EInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460ED26B341FB00FFD368 /* EInventory.swift */; };
 		ADF460F026B3441D00FFD368 /* VisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460EF26B3441D00FFD368 /* VisualComponent.swift */; };
 		ADF460F226B350BF00FFD368 /* MeshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460F126B350BF00FFD368 /* MeshComponent.swift */; };
-		ADF460F426B35AE300FFD368 /* ColorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460F326B35AE300FFD368 /* ColorComponent.swift */; };
+		ADF460F726B71C0600FFD368 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460F626B71C0600FFD368 /* EntityManager.swift */; };
+		ADF460FA26B736B200FFD368 /* GKEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460F926B736B200FFD368 /* GKEntity.swift */; };
+		ADF460FC26B888B400FFD368 /* StorageInventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460FB26B888B400FFD368 /* StorageInventoryComponent.swift */; };
+		ADF460FE26B890E300FFD368 /* MeshBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460FD26B890E300FFD368 /* MeshBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +52,10 @@
 		ADF460ED26B341FB00FFD368 /* EInventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EInventory.swift; sourceTree = "<group>"; };
 		ADF460EF26B3441D00FFD368 /* VisualComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualComponent.swift; sourceTree = "<group>"; };
 		ADF460F126B350BF00FFD368 /* MeshComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshComponent.swift; sourceTree = "<group>"; };
-		ADF460F326B35AE300FFD368 /* ColorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorComponent.swift; sourceTree = "<group>"; };
+		ADF460F626B71C0600FFD368 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		ADF460F926B736B200FFD368 /* GKEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKEntity.swift; sourceTree = "<group>"; };
+		ADF460FB26B888B400FFD368 /* StorageInventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageInventoryComponent.swift; sourceTree = "<group>"; };
+		ADF460FD26B890E300FFD368 /* MeshBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +136,11 @@
 		ADF460EA26B33F0A00FFD368 /* ECS */ = {
 			isa = PBXGroup;
 			children = (
+				ADF460F826B7369E00FFD368 /* Extension */,
+				ADF460F526B71BDC00FFD368 /* Systems */,
 				ADF460EC26B33FD500FFD368 /* Components */,
 				ADF460EB26B33FC100FFD368 /* Entities */,
+				ADF460F626B71C0600FFD368 /* EntityManager.swift */,
 			);
 			path = ECS;
 			sourceTree = "<group>";
@@ -149,9 +158,25 @@
 			children = (
 				ADF460EF26B3441D00FFD368 /* VisualComponent.swift */,
 				ADF460F126B350BF00FFD368 /* MeshComponent.swift */,
-				ADF460F326B35AE300FFD368 /* ColorComponent.swift */,
+				ADF460FB26B888B400FFD368 /* StorageInventoryComponent.swift */,
+				ADF460FD26B890E300FFD368 /* MeshBackground.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		ADF460F526B71BDC00FFD368 /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Systems;
+			sourceTree = "<group>";
+		};
+		ADF460F826B7369E00FFD368 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				ADF460F926B736B200FFD368 /* GKEntity.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,17 +254,20 @@
 				ADF460F026B3441D00FFD368 /* VisualComponent.swift in Sources */,
 				ADF460F226B350BF00FFD368 /* MeshComponent.swift in Sources */,
 				AD001DB526AF5DBF0010E0FF /* MeshLayer.swift in Sources */,
+				ADF460FE26B890E300FFD368 /* MeshBackground.swift in Sources */,
 				ADF460EE26B341FB00FFD368 /* EInventory.swift in Sources */,
 				ADDEA34926A8C2050010DA6E /* GameScene.swift in Sources */,
+				ADF460F726B71C0600FFD368 /* EntityManager.swift in Sources */,
+				ADF460FC26B888B400FFD368 /* StorageInventoryComponent.swift in Sources */,
 				ADF460E926B1F17D00FFD368 /* InventoryGestures.swift in Sources */,
 				AD001DB326ACBA8F0010E0FF /* MeshLayerTouches.swift in Sources */,
 				ADDEA35B26AA1ECD0010DA6E /* Cell.swift in Sources */,
 				ADDEA34B26A8C2050010DA6E /* GameViewController.swift in Sources */,
 				ADF460E226B1DE1000FFD368 /* InventoryConfiguration.swift in Sources */,
 				ADDEA36026AB5FDA0010DA6E /* Item.swift in Sources */,
+				ADF460FA26B736B200FFD368 /* GKEntity.swift in Sources */,
 				ADDEA34326A8C2050010DA6E /* AppDelegate.swift in Sources */,
 				ADDEA35D26AA22610010DA6E /* Storage.swift in Sources */,
-				ADF460F426B35AE300FFD368 /* ColorComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
