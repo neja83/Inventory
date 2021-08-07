@@ -41,6 +41,6 @@ struct EInventorySetting {
     static let bodyColor: UIColor = .orange
     
     // Mesh
-    static let cellNumbers: InventorySize = InventorySize(lines: 3, columns: 3)
+    static let meshSize: InventorySize = InventorySize(lines: 4, columns: 2)
 }
 

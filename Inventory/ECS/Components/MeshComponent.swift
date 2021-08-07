@@ -20,9 +20,11 @@ class MeshComponent: GKComponent, Mesh {
     var mesh: [Cell] = []
     
     private var background: MeshBackground
+    private var meshSize: InventorySize
     
-    init(size: CGSize) {
+    init(size: CGSize, inventorySize: InventorySize = EInventorySetting.meshSize) {
         self.background = MeshBackground(size: size)
+        self.meshSize = inventorySize
         super.init()
         
         self.background.mesh = self
@@ -43,6 +45,8 @@ class MeshComponent: GKComponent, Mesh {
             item.position = first.position
             item.zPosition = first.zPosition + 5
             background.addChild(item)
+        } else {
+            
         }
     }
     
@@ -116,25 +120,24 @@ class MeshComponent: GKComponent, Mesh {
     private func setup() {
         let cellSize = self.calculateCellSize(for: background.calculateAccumulatedFrame().size)
         
-        self.create(for: cellSize)
+        self.create(with: cellSize)
     }
     
-    private func create(for cellSize: CGSize) {
+    private func create(with cellSize: CGSize) {
         let backgroundSize = background.calculateAccumulatedFrame().size
-        let mesh = EInventorySetting.cellNumbers
         var index = 0
         
         // Up left corner Y coordinate of column
         var positionY: CGFloat = backgroundSize.height / 2 // - configuration.padding
         
         // Lines
-        for _ in 1...mesh.lines {
+        for _ in 1...meshSize.lines {
             // Up left corner X coordinate of line
             var positionX: CGFloat = -backgroundSize.width / 2 // + configuration.padding
             let diffY = positionY - cellSize.height / 2
             
             // Columns
-            for _ in 1...mesh.columns {
+            for _ in 1...meshSize.columns {
                 let diffX = positionX + cellSize.width / 2
                 
                 self.addCell(at: CGPoint(x: diffX, y: diffY), with: cellSize, index: index)
@@ -158,8 +161,8 @@ class MeshComponent: GKComponent, Mesh {
     }
     
     private func calculateCellSize(for size: CGSize) -> CGSize {
-       CGSize(width: size.width / CGFloat(EInventorySetting.cellNumbers.columns),
-              height: size.height / CGFloat(EInventorySetting.cellNumbers.lines))
+       CGSize(width: size.width / CGFloat(meshSize.columns),
+              height: size.height / CGFloat(meshSize.lines))
     }
     
     required init?(coder: NSCoder) {
