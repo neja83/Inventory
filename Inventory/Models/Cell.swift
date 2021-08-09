@@ -8,7 +8,11 @@
 import Foundation
 import SpriteKit
 
-class Cell: SKSpriteNode {
+protocol ExternalPosition {
+    var outerPosition: CGPoint { get set }
+}
+
+class Cell: SKSpriteNode, ExternalPosition {
     
     private var visualNode: SKShapeNode
     
@@ -18,6 +22,36 @@ class Cell: SKSpriteNode {
     
     private let colorSelected:    UIColor = .yellow
     private let colorCanDrop:     UIColor = .green
+    
+    private var lastPosition: CGPoint = .zero
+    
+    var outerPosition: CGPoint = .zero {
+        didSet {
+            if let frame = self.parent?.parent {
+                
+                let frameSize = frame.frame.size
+                let selfSize = self.frame.size
+                let delta = EInventorySetting.scrollMaskPadding
+                
+                let range = (-frameSize.width/2-selfSize.width + delta...frameSize.width/2 + selfSize.width - delta)
+
+                switch lastPosition.x > outerPosition.x  {
+                    case  true: // <---
+                        if range.contains(outerPosition.x + position.x - selfSize.width/2) {
+                            self.isHidden = false
+                        } else {
+                            self.isHidden = true
+                        }
+                    case false: // --->
+                        if range.contains(outerPosition.x + position.x + selfSize.width/2) {
+                            self.isHidden = false
+                        } else {
+                            self.isHidden = true
+                        }
+                }
+            }
+        }
+    }
     
     // MARK: - link with stored item
     private(set) var item: Item? {

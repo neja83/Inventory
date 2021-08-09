@@ -16,7 +16,7 @@ class ControlPanelComponent: GKComponent, AcrionsComponent {
     
     typealias Sort = (() -> Void)
     
-    private var button: SKShapeNode
+    public var button: SKShapeNode
     private var position: ControlPanelPosition
     
     public var action: Sort?

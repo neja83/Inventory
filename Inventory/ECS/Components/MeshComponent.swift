@@ -18,12 +18,18 @@ protocol Mesh {
 class MeshComponent: GKComponent, Mesh {
     
     var mesh: [Cell] = []
+    var background: MeshBackground
     
-    private var background: MeshBackground
     private var meshSize: InventorySize
     
-    init(size: CGSize, inventorySize: InventorySize = EInventorySetting.meshSize) {
-        self.background = MeshBackground(size: size)
+    init(inventorySize: InventorySize) {
+        let itemSize = EInventorySetting.itemSize
+        
+        let width = CGFloat(inventorySize.columns) * itemSize.width + EInventorySetting.padding * CGFloat((inventorySize.columns + 1))
+        let height = CGFloat(inventorySize.lines) * itemSize.width + EInventorySetting.padding * CGFloat((inventorySize.lines + 1))
+        let size = CGSize(width: width, height: height)
+        
+        self.background = MeshBackground(size: CGSize(width: size.width, height: size.height))
         self.meshSize = inventorySize
         super.init()
         
@@ -32,19 +38,16 @@ class MeshComponent: GKComponent, Mesh {
     
     // MARK: - Override
     override func didAddToEntity() {
-        if let visualNode = entity?.component(ofType: VisualComponent.self)?.node {
-            self.setup()
-            visualNode.addChild(background)
-        }
+        self.setup()
     }
     
-    public func add(item: Item) {
+    // MARK: - Item actioins
+    func add(item: Item) {
         if let first = mesh.first(where: { $0.isEmpty }) {
             first.link(with: item)
             
-            item.position = first.position
-            item.zPosition = first.zPosition + 5
-            background.addChild(item)
+            item.position = .zero
+            first.addChild(item)
         } else {
             
         }
@@ -79,9 +82,12 @@ class MeshComponent: GKComponent, Mesh {
     private func put(item: Item, in cell: Cell) {
         if (cell.isEmpty) {
             cell.link(with: item)
+            item.removeFromParent()
             
-            item.position = cell.position
+            item.position = .zero
             item.zPosition = cell.zPosition + 5
+            
+            cell.addChild(item)
         }
     }
     
@@ -117,6 +123,7 @@ class MeshComponent: GKComponent, Mesh {
         // TODO sort by item name
     }
     
+    // MARK: - Mesh setup
     private func setup() {
         let cellSize = self.calculateCellSize(for: background.calculateAccumulatedFrame().size)
         
@@ -163,6 +170,15 @@ class MeshComponent: GKComponent, Mesh {
     private func calculateCellSize(for size: CGSize) -> CGSize {
        CGSize(width: size.width / CGFloat(meshSize.columns),
               height: size.height / CGFloat(meshSize.lines))
+    }
+    
+    private func calculateBackgroundSize(for size: InventorySize) -> CGSize {
+        let itemSize = EInventorySetting.itemSize
+        
+        let width = CGFloat(size.columns) * itemSize.width + EInventorySetting.padding * CGFloat((size.columns + 1))
+        let height = CGFloat(size.lines) * itemSize.width + EInventorySetting.padding * CGFloat((size.lines + 1))
+        
+        return CGSize(width: width, height: height)
     }
     
     required init?(coder: NSCoder) {

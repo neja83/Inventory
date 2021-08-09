@@ -14,6 +14,16 @@ class MeshBackground: SKShapeNode {
     private var fromCell: Cell?
     private var toCell: Cell?
     
+    override var position: CGPoint {
+        didSet {
+            for node in self.children  {
+                if var item = node as? ExternalPosition {
+                    item.outerPosition = position
+                }
+            }
+        }
+    }
+    
     init(size: CGSize) {
         super.init()
         
@@ -21,8 +31,7 @@ class MeshBackground: SKShapeNode {
         self.path = CGPath(rect: rect, transform: .none)
         
         self.strokeColor = .clear
-        
-        isUserInteractionEnabled = true
+        self.name = "Mesh background node"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,7 +43,7 @@ class MeshBackground: SKShapeNode {
 extension MeshBackground {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+       
         if let touch = touches.first, touches.count == 1 {
             
             // Position of touch
@@ -44,7 +53,7 @@ extension MeshBackground {
             let tochesNodes = self.nodes(at: position)
             
             // Try find cell with item
-            for node in tochesNodes.reversed() {
+            for node in tochesNodes {
                 
                 if let cell = node as? Cell {
                     
@@ -52,21 +61,38 @@ extension MeshBackground {
                         cell.onSelect()
                         
                         self.fromCell = cell
+                        if let item = self.fromCell?.item {
+                            item.removeFromParent()
+                            item.position = position
+                            item.zPosition = 10
+                            addChild(item)
+                        }
                     }
+                } else {
+                    node.touchesBegan(touches, with: event)
                 }
             }
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first, touches.count == 1, let movedCell = self.fromCell else { return }
+        guard let touch = touches.first else { return }
         
         // Position of touch
         let position = touch.location(in: self)
-        movedCell.item?.position = position
         
+        guard touches.count == 1, let movedCell = self.fromCell else {
+            
+            for node in nodes(at: position) {
+                node.touchesMoved(touches, with: event)
+            }
+            
+            return
+        }
+        
+        movedCell.item?.position = position
         // Try find cell
-        for node in nodes(at: position).reversed() {
+        for node in nodes(at: position) {
             
             if let cell = node as? Cell {
     
@@ -89,17 +115,34 @@ extension MeshBackground {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let oldCell = self.fromCell else { return }
+        guard let oldCell = self.fromCell, let touch = touches.first else { return }
         
+        let nodes = self.nodes(at: touch.location(in: self))
+        for node in nodes {
+            node.touchesEnded(touches, with: event)
+        }
         if let newCell = self.toCell {
             mesh?.move(from: oldCell, to: newCell)
         } else {
-            oldCell.item?.position = oldCell.position
+            if let item = oldCell.item {
+                item.removeFromParent()
+                oldCell.addChild(item)
+                item.position = .zero
+            }
         }
         
         mesh?.dropHoverCell()
         mesh?.dropSelectCell()
         self.fromCell = nil
         self.toCell   = nil
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        
+        let nodes = self.nodes(at: touch.location(in: self))
+        for node in nodes {
+            node.touchesCancelled(touches, with: event)
+        }
     }
 }

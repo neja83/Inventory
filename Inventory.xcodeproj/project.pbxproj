@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		AD001DB326ACBA8F0010E0FF /* MeshLayerTouches.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD001DB226ACBA8F0010E0FF /* MeshLayerTouches.swift */; };
 		AD001DB526AF5DBF0010E0FF /* MeshLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD001DB426AF5DBF0010E0FF /* MeshLayer.swift */; };
+		AD9EC04E26BF3A6D00260A57 /* ItemNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EC04D26BF3A6D00260A57 /* ItemNode.swift */; };
+		AD9EC05026BF3D0200260A57 /* BackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EC04F26BF3D0200260A57 /* BackgroundNode.swift */; };
+		ADBA2C4C26C065B40011CA49 /* ScrollMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C4B26C065B40011CA49 /* ScrollMask.swift */; };
 		ADDEA34326A8C2050010DA6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDEA34226A8C2050010DA6E /* AppDelegate.swift */; };
 		ADDEA34526A8C2050010DA6E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = ADDEA34426A8C2050010DA6E /* GameScene.sks */; };
 		ADDEA34726A8C2050010DA6E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = ADDEA34626A8C2050010DA6E /* Actions.sks */; };
@@ -31,11 +34,16 @@
 		ADF460FE26B890E300FFD368 /* MeshBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460FD26B890E300FFD368 /* MeshBackground.swift */; };
 		ADF4610026B9D81F00FFD368 /* ControlPanelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460FF26B9D81F00FFD368 /* ControlPanelComponent.swift */; };
 		ADF4610226BB1E1F00FFD368 /* ScrollNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4610126BB1E1F00FFD368 /* ScrollNode.swift */; };
+		ADF4610C26BED5CA00FFD368 /* ScrollComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4610B26BED5CA00FFD368 /* ScrollComponent.swift */; };
+		ADF4611026BF336F00FFD368 /* NewScrollNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4610F26BF336F00FFD368 /* NewScrollNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AD001DB226ACBA8F0010E0FF /* MeshLayerTouches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshLayerTouches.swift; sourceTree = "<group>"; };
 		AD001DB426AF5DBF0010E0FF /* MeshLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshLayer.swift; sourceTree = "<group>"; };
+		AD9EC04D26BF3A6D00260A57 /* ItemNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNode.swift; sourceTree = "<group>"; };
+		AD9EC04F26BF3D0200260A57 /* BackgroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundNode.swift; sourceTree = "<group>"; };
+		ADBA2C4B26C065B40011CA49 /* ScrollMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollMask.swift; sourceTree = "<group>"; };
 		ADDEA33F26A8C2050010DA6E /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDEA34226A8C2050010DA6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADDEA34426A8C2050010DA6E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -60,6 +68,8 @@
 		ADF460FD26B890E300FFD368 /* MeshBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshBackground.swift; sourceTree = "<group>"; };
 		ADF460FF26B9D81F00FFD368 /* ControlPanelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelComponent.swift; sourceTree = "<group>"; };
 		ADF4610126BB1E1F00FFD368 /* ScrollNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollNode.swift; sourceTree = "<group>"; };
+		ADF4610B26BED5CA00FFD368 /* ScrollComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollComponent.swift; sourceTree = "<group>"; };
+		ADF4610F26BF336F00FFD368 /* NewScrollNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScrollNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +90,17 @@
 				ADF460E826B1F17D00FFD368 /* InventoryGestures.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ADBA2C4826C0609D0011CA49 /* Scroll v3 */ = {
+			isa = PBXGroup;
+			children = (
+				ADF4610F26BF336F00FFD368 /* NewScrollNode.swift */,
+				AD9EC04D26BF3A6D00260A57 /* ItemNode.swift */,
+				AD9EC04F26BF3D0200260A57 /* BackgroundNode.swift */,
+				ADBA2C4B26C065B40011CA49 /* ScrollMask.swift */,
+			);
+			path = "Scroll v3";
 			sourceTree = "<group>";
 		};
 		ADDEA33626A8C2050010DA6E = {
@@ -120,6 +141,7 @@
 		ADDEA35926AA1A6E0010DA6E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ADBA2C4826C0609D0011CA49 /* Scroll v3 */,
 				ADDEA35726AA067C0010DA6E /* Inventory.swift */,
 				ADF460E126B1DE1000FFD368 /* InventoryConfiguration.swift */,
 				ADDEA35A26AA1ECD0010DA6E /* Cell.swift */,
@@ -166,6 +188,7 @@
 				ADF460FB26B888B400FFD368 /* StorageInventoryComponent.swift */,
 				ADF460FD26B890E300FFD368 /* MeshBackground.swift */,
 				ADF460FF26B9D81F00FFD368 /* ControlPanelComponent.swift */,
+				ADF4610B26BED5CA00FFD368 /* ScrollComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -272,7 +295,10 @@
 				AD001DB526AF5DBF0010E0FF /* MeshLayer.swift in Sources */,
 				ADF460FE26B890E300FFD368 /* MeshBackground.swift in Sources */,
 				ADF460EE26B341FB00FFD368 /* EInventory.swift in Sources */,
+				AD9EC04E26BF3A6D00260A57 /* ItemNode.swift in Sources */,
 				ADDEA34926A8C2050010DA6E /* GameScene.swift in Sources */,
+				ADBA2C4C26C065B40011CA49 /* ScrollMask.swift in Sources */,
+				ADF4610C26BED5CA00FFD368 /* ScrollComponent.swift in Sources */,
 				ADF460F726B71C0600FFD368 /* EntityManager.swift in Sources */,
 				ADF460FC26B888B400FFD368 /* StorageInventoryComponent.swift in Sources */,
 				ADF460E926B1F17D00FFD368 /* InventoryGestures.swift in Sources */,
@@ -283,7 +309,9 @@
 				ADDEA36026AB5FDA0010DA6E /* Item.swift in Sources */,
 				ADF460FA26B736B200FFD368 /* GKEntity.swift in Sources */,
 				ADDEA34326A8C2050010DA6E /* AppDelegate.swift in Sources */,
+				AD9EC05026BF3D0200260A57 /* BackgroundNode.swift in Sources */,
 				ADDEA35D26AA22610010DA6E /* Storage.swift in Sources */,
+				ADF4611026BF336F00FFD368 /* NewScrollNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

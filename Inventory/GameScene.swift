@@ -11,34 +11,20 @@ import GameplayKit
 class GameScene: SKScene {
     
     private let manager: EntityManager = EntityManager()
-    
     private var lastUpdateTime : TimeInterval = 0
     
-    private var childNode: SKShapeNode?
      
-    override func sceneDidLoad() {
-        manager.scene = self
-    }
+    override func sceneDidLoad() { manager.scene = self }
     
     override func didMove(to view: SKView) {
-
-        let node = SKShapeNode(rectOf: CGSize(width: 50, height: 50), cornerRadius: 2)
-        node.strokeColor = .blue
-        node.fillColor = .green
-
-        let scrollNode = SKShapeNode(rectOf: CGSize(width: size.width, height: size.height/2), cornerRadius: 5)
-        scrollNode.fillColor = .clear
-        scrollNode.strokeColor = .orange
-        scrollNode.addChild(node)
+        let inventory = EInventory(defaultSize: InventorySize(lines: 3, columns: 5))
+        manager.add(entity: inventory)
         
-        let maskNode = SKShapeNode(rectOf: CGSize(width: size.width/2, height: size.height/2), cornerRadius: 5)
-        maskNode.position = CGPoint(x: 0, y: 0)
-        maskNode.fillColor = .green
-        maskNode.strokeColor = .green
-
-        let scroll: ScrollNode = ScrollNode(mask: maskNode, target: scrollNode)
-        scroll.position = CGPoint(x: 0, y: 0)
-        addChild(scroll)
+        if let storage = inventory.component(ofType: StorageInventoryComponent.self) {
+            let sword = Item(id: 2, size: EInventorySetting.itemSize, name: "Sword")
+            
+            storage.add(item: sword)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -50,24 +36,33 @@ class GameScene: SKScene {
         
         for node in nodes {
             node.touchesBegan(touches, with: event)
-            if let inv = manager.findEntity(with: node) {
-                if let controlPanel = inv.component(ofType: ControlPanelComponent.self) {
-                    controlPanel.onClick()
-                }
-            }
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         
-        let position = touch.location(in: self)
-        childNode?.position.x = position.x
-        let nodes = self.nodes(at: position)
-        
+        let nodes = self.nodes(at: touch.location(in: self))
         for node in nodes {
-            
             node.touchesMoved(touches, with: event)
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        
+        let nodes = self.nodes(at: touch.location(in: self))
+        for node in nodes {
+            node.touchesEnded(touches, with: event)
+        }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        
+        let nodes = self.nodes(at: touch.location(in: self))
+        for node in nodes {
+            node.touchesCancelled(touches, with: event)
         }
     }
     

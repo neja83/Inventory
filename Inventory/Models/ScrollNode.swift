@@ -47,14 +47,13 @@ extension ScrollNode {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first, let positionBefor = self.lastPosition else { return }
-        
         let position = touch.location(in: self)
         
         self.calculateNewPosition(for: position, after: positionBefor)
         
         let nodes = self.nodes(at: position)
         for node in nodes {
-            node.touchesBegan(touches, with: event)
+            node.touchesMoved(touches, with: event)
         }
         
         self.lastPosition = position
@@ -66,7 +65,7 @@ extension ScrollNode {
             
         let nodes = self.nodes(at: touch.location(in: self))
         for node in nodes {
-            node.touchesBegan(touches, with: event)
+            node.touchesEnded(touches, with: event)
         }
         
         self.lastPosition = nil
@@ -77,7 +76,7 @@ extension ScrollNode {
             
         let nodes = self.nodes(at: touch.location(in: self))
         for node in nodes {
-            node.touchesBegan(touches, with: event)
+            node.touchesCancelled(touches, with: event)
         }
         
         self.lastPosition = nil
