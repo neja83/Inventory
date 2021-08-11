@@ -10,15 +10,17 @@ import GameplayKit
 
 class ScrollComponent: GKComponent {
     
-    var scroll: NewScrollNode?
+    var scroll: ScrollNode?
     
     override init() {
         super.init()
     }
     
     override func didAddToEntity() {
-        if let visual = entity?.component(ofType: VisualComponent.self), let mesh = entity?.component(ofType: MeshComponent.self) {
-            let scrollNode = NewScrollNode(size: visual.node.frame.size, background: mesh.background)
+        if let visual = entity?.component(ofType: VisualComponent.self),
+           let backgroundMesh = entity?.component(ofType: BackgroundMeshComponent.self){
+            
+            let scrollNode = ScrollNode(size: visual.node.frame.size, background: backgroundMesh.node)
             
             self.scroll = scrollNode
             visual.node.addChild(scrollNode)

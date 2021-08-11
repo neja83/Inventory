@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class ScrollNode: SKCropNode {
+class ScrollNodeOld: SKCropNode {
     
     var scrollNode: SKShapeNode
     var lastPosition: CGPoint?
@@ -33,7 +33,7 @@ class ScrollNode: SKCropNode {
     
 }
 
-extension ScrollNode {
+extension ScrollNodeOld {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         

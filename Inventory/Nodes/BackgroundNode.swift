@@ -8,9 +8,9 @@
 import Foundation
 import GameplayKit
 
-class MeshBackground: SKShapeNode {
+class BackgroundNode: SKShapeNode {
     
-    internal var mesh: Mesh?
+    var meshDelegate: Mesh?
     private var fromCell: Cell?
     private var toCell: Cell?
     
@@ -40,7 +40,7 @@ class MeshBackground: SKShapeNode {
     
 }
 
-extension MeshBackground {
+extension BackgroundNode {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
        
@@ -68,8 +68,6 @@ extension MeshBackground {
                             addChild(item)
                         }
                     }
-                } else {
-                    node.touchesBegan(touches, with: event)
                 }
             }
         }
@@ -81,14 +79,7 @@ extension MeshBackground {
         // Position of touch
         let position = touch.location(in: self)
         
-        guard touches.count == 1, let movedCell = self.fromCell else {
-            
-            for node in nodes(at: position) {
-                node.touchesMoved(touches, with: event)
-            }
-            
-            return
-        }
+        guard touches.count == 1, let movedCell = self.fromCell else { return }
         
         movedCell.item?.position = position
         // Try find cell
@@ -115,14 +106,10 @@ extension MeshBackground {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let oldCell = self.fromCell, let touch = touches.first else { return }
+        guard let oldCell = self.fromCell else { return }
         
-        let nodes = self.nodes(at: touch.location(in: self))
-        for node in nodes {
-            node.touchesEnded(touches, with: event)
-        }
         if let newCell = self.toCell {
-            mesh?.move(from: oldCell, to: newCell)
+            meshDelegate?.move(from: oldCell, to: newCell)
         } else {
             if let item = oldCell.item {
                 item.removeFromParent()
@@ -131,18 +118,27 @@ extension MeshBackground {
             }
         }
         
-        mesh?.dropHoverCell()
-        mesh?.dropSelectCell()
+        meshDelegate?.dropHoverCell()
+        meshDelegate?.dropSelectCell()
         self.fromCell = nil
         self.toCell   = nil
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
+    
+        // TODO - add actions for toCell scenario
         
-        let nodes = self.nodes(at: touch.location(in: self))
-        for node in nodes {
-            node.touchesCancelled(touches, with: event)
+        if let oldCell = self.fromCell {
+            if let item = oldCell.item {
+                item.removeFromParent()
+                oldCell.addChild(item)
+                item.position = .zero
+            }
         }
+        
+        meshDelegate?.dropHoverCell()
+        meshDelegate?.dropSelectCell()
+        self.fromCell = nil
+        self.toCell   = nil
     }
 }

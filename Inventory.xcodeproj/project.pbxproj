@@ -10,8 +10,11 @@
 		AD001DB326ACBA8F0010E0FF /* MeshLayerTouches.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD001DB226ACBA8F0010E0FF /* MeshLayerTouches.swift */; };
 		AD001DB526AF5DBF0010E0FF /* MeshLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD001DB426AF5DBF0010E0FF /* MeshLayer.swift */; };
 		AD9EC04E26BF3A6D00260A57 /* ItemNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EC04D26BF3A6D00260A57 /* ItemNode.swift */; };
-		AD9EC05026BF3D0200260A57 /* BackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EC04F26BF3D0200260A57 /* BackgroundNode.swift */; };
 		ADBA2C4C26C065B40011CA49 /* ScrollMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C4B26C065B40011CA49 /* ScrollMask.swift */; };
+		ADBA2C5126C1D6D00011CA49 /* VisualMeshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C5026C1D6D00011CA49 /* VisualMeshComponent.swift */; };
+		ADBA2C5526C316860011CA49 /* ItemMoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C5426C316860011CA49 /* ItemMoveSystem.swift */; };
+		ADBA2C5726C31E8B0011CA49 /* BackgroundMeshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C5626C31E8B0011CA49 /* BackgroundMeshComponent.swift */; };
+		ADBA2C5A26C326000011CA49 /* MeshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C5926C326000011CA49 /* MeshComponent.swift */; };
 		ADDEA34326A8C2050010DA6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDEA34226A8C2050010DA6E /* AppDelegate.swift */; };
 		ADDEA34526A8C2050010DA6E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = ADDEA34426A8C2050010DA6E /* GameScene.sks */; };
 		ADDEA34726A8C2050010DA6E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = ADDEA34626A8C2050010DA6E /* Actions.sks */; };
@@ -27,23 +30,25 @@
 		ADF460E926B1F17D00FFD368 /* InventoryGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460E826B1F17D00FFD368 /* InventoryGestures.swift */; };
 		ADF460EE26B341FB00FFD368 /* EInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460ED26B341FB00FFD368 /* EInventory.swift */; };
 		ADF460F026B3441D00FFD368 /* VisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460EF26B3441D00FFD368 /* VisualComponent.swift */; };
-		ADF460F226B350BF00FFD368 /* MeshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460F126B350BF00FFD368 /* MeshComponent.swift */; };
 		ADF460F726B71C0600FFD368 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460F626B71C0600FFD368 /* EntityManager.swift */; };
 		ADF460FA26B736B200FFD368 /* GKEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460F926B736B200FFD368 /* GKEntity.swift */; };
 		ADF460FC26B888B400FFD368 /* StorageInventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460FB26B888B400FFD368 /* StorageInventoryComponent.swift */; };
-		ADF460FE26B890E300FFD368 /* MeshBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460FD26B890E300FFD368 /* MeshBackground.swift */; };
+		ADF460FE26B890E300FFD368 /* BackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460FD26B890E300FFD368 /* BackgroundNode.swift */; };
 		ADF4610026B9D81F00FFD368 /* ControlPanelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF460FF26B9D81F00FFD368 /* ControlPanelComponent.swift */; };
-		ADF4610226BB1E1F00FFD368 /* ScrollNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4610126BB1E1F00FFD368 /* ScrollNode.swift */; };
+		ADF4610226BB1E1F00FFD368 /* ScrollNodeOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4610126BB1E1F00FFD368 /* ScrollNodeOld.swift */; };
 		ADF4610C26BED5CA00FFD368 /* ScrollComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4610B26BED5CA00FFD368 /* ScrollComponent.swift */; };
-		ADF4611026BF336F00FFD368 /* NewScrollNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4610F26BF336F00FFD368 /* NewScrollNode.swift */; };
+		ADF4611026BF336F00FFD368 /* ScrollNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4610F26BF336F00FFD368 /* ScrollNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AD001DB226ACBA8F0010E0FF /* MeshLayerTouches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshLayerTouches.swift; sourceTree = "<group>"; };
 		AD001DB426AF5DBF0010E0FF /* MeshLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshLayer.swift; sourceTree = "<group>"; };
 		AD9EC04D26BF3A6D00260A57 /* ItemNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNode.swift; sourceTree = "<group>"; };
-		AD9EC04F26BF3D0200260A57 /* BackgroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundNode.swift; sourceTree = "<group>"; };
 		ADBA2C4B26C065B40011CA49 /* ScrollMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollMask.swift; sourceTree = "<group>"; };
+		ADBA2C5026C1D6D00011CA49 /* VisualMeshComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualMeshComponent.swift; sourceTree = "<group>"; };
+		ADBA2C5426C316860011CA49 /* ItemMoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMoveSystem.swift; sourceTree = "<group>"; };
+		ADBA2C5626C31E8B0011CA49 /* BackgroundMeshComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMeshComponent.swift; sourceTree = "<group>"; };
+		ADBA2C5926C326000011CA49 /* MeshComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshComponent.swift; sourceTree = "<group>"; };
 		ADDEA33F26A8C2050010DA6E /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDEA34226A8C2050010DA6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADDEA34426A8C2050010DA6E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -61,15 +66,14 @@
 		ADF460E826B1F17D00FFD368 /* InventoryGestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryGestures.swift; sourceTree = "<group>"; };
 		ADF460ED26B341FB00FFD368 /* EInventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EInventory.swift; sourceTree = "<group>"; };
 		ADF460EF26B3441D00FFD368 /* VisualComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualComponent.swift; sourceTree = "<group>"; };
-		ADF460F126B350BF00FFD368 /* MeshComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshComponent.swift; sourceTree = "<group>"; };
 		ADF460F626B71C0600FFD368 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		ADF460F926B736B200FFD368 /* GKEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKEntity.swift; sourceTree = "<group>"; };
 		ADF460FB26B888B400FFD368 /* StorageInventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageInventoryComponent.swift; sourceTree = "<group>"; };
-		ADF460FD26B890E300FFD368 /* MeshBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshBackground.swift; sourceTree = "<group>"; };
+		ADF460FD26B890E300FFD368 /* BackgroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundNode.swift; sourceTree = "<group>"; };
 		ADF460FF26B9D81F00FFD368 /* ControlPanelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelComponent.swift; sourceTree = "<group>"; };
-		ADF4610126BB1E1F00FFD368 /* ScrollNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollNode.swift; sourceTree = "<group>"; };
+		ADF4610126BB1E1F00FFD368 /* ScrollNodeOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollNodeOld.swift; sourceTree = "<group>"; };
 		ADF4610B26BED5CA00FFD368 /* ScrollComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollComponent.swift; sourceTree = "<group>"; };
-		ADF4610F26BF336F00FFD368 /* NewScrollNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScrollNode.swift; sourceTree = "<group>"; };
+		ADF4610F26BF336F00FFD368 /* ScrollNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,12 +99,32 @@
 		ADBA2C4826C0609D0011CA49 /* Scroll v3 */ = {
 			isa = PBXGroup;
 			children = (
-				ADF4610F26BF336F00FFD368 /* NewScrollNode.swift */,
 				AD9EC04D26BF3A6D00260A57 /* ItemNode.swift */,
-				AD9EC04F26BF3D0200260A57 /* BackgroundNode.swift */,
-				ADBA2C4B26C065B40011CA49 /* ScrollMask.swift */,
 			);
 			path = "Scroll v3";
+			sourceTree = "<group>";
+		};
+		ADBA2C4D26C1D2BC0011CA49 /* Mesh */ = {
+			isa = PBXGroup;
+			children = (
+				ADBA2C5026C1D6D00011CA49 /* VisualMeshComponent.swift */,
+				ADBA2C5626C31E8B0011CA49 /* BackgroundMeshComponent.swift */,
+				ADBA2C5926C326000011CA49 /* MeshComponent.swift */,
+				ADF460FB26B888B400FFD368 /* StorageInventoryComponent.swift */,
+			);
+			path = Mesh;
+			sourceTree = "<group>";
+		};
+		ADBA2C5826C322280011CA49 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				ADF460FD26B890E300FFD368 /* BackgroundNode.swift */,
+				ADF4610F26BF336F00FFD368 /* ScrollNode.swift */,
+				ADBA2C4B26C065B40011CA49 /* ScrollMask.swift */,
+				ADDEA35A26AA1ECD0010DA6E /* Cell.swift */,
+				ADDEA35F26AB5FDA0010DA6E /* Item.swift */,
+			);
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 		ADDEA33626A8C2050010DA6E = {
@@ -122,6 +146,7 @@
 		ADDEA34126A8C2050010DA6E /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				ADBA2C5826C322280011CA49 /* Nodes */,
 				ADF4610626BB378700FFD368 /* Scenes */,
 				ADF460EA26B33F0A00FFD368 /* ECS */,
 				ADF460E326B1E66500FFD368 /* Errors */,
@@ -144,11 +169,9 @@
 				ADBA2C4826C0609D0011CA49 /* Scroll v3 */,
 				ADDEA35726AA067C0010DA6E /* Inventory.swift */,
 				ADF460E126B1DE1000FFD368 /* InventoryConfiguration.swift */,
-				ADDEA35A26AA1ECD0010DA6E /* Cell.swift */,
 				ADDEA35C26AA22610010DA6E /* Storage.swift */,
-				ADDEA35F26AB5FDA0010DA6E /* Item.swift */,
 				AD001DB426AF5DBF0010E0FF /* MeshLayer.swift */,
-				ADF4610126BB1E1F00FFD368 /* ScrollNode.swift */,
+				ADF4610126BB1E1F00FFD368 /* ScrollNodeOld.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,10 +206,8 @@
 		ADF460EC26B33FD500FFD368 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				ADBA2C4D26C1D2BC0011CA49 /* Mesh */,
 				ADF460EF26B3441D00FFD368 /* VisualComponent.swift */,
-				ADF460F126B350BF00FFD368 /* MeshComponent.swift */,
-				ADF460FB26B888B400FFD368 /* StorageInventoryComponent.swift */,
-				ADF460FD26B890E300FFD368 /* MeshBackground.swift */,
 				ADF460FF26B9D81F00FFD368 /* ControlPanelComponent.swift */,
 				ADF4610B26BED5CA00FFD368 /* ScrollComponent.swift */,
 			);
@@ -196,6 +217,7 @@
 		ADF460F526B71BDC00FFD368 /* Systems */ = {
 			isa = PBXGroup;
 			children = (
+				ADBA2C5426C316860011CA49 /* ItemMoveSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -290,28 +312,30 @@
 				ADDEA35826AA067D0010DA6E /* Inventory.swift in Sources */,
 				ADF460F026B3441D00FFD368 /* VisualComponent.swift in Sources */,
 				ADF4610026B9D81F00FFD368 /* ControlPanelComponent.swift in Sources */,
-				ADF460F226B350BF00FFD368 /* MeshComponent.swift in Sources */,
-				ADF4610226BB1E1F00FFD368 /* ScrollNode.swift in Sources */,
+				ADF4610226BB1E1F00FFD368 /* ScrollNodeOld.swift in Sources */,
 				AD001DB526AF5DBF0010E0FF /* MeshLayer.swift in Sources */,
-				ADF460FE26B890E300FFD368 /* MeshBackground.swift in Sources */,
+				ADF460FE26B890E300FFD368 /* BackgroundNode.swift in Sources */,
 				ADF460EE26B341FB00FFD368 /* EInventory.swift in Sources */,
 				AD9EC04E26BF3A6D00260A57 /* ItemNode.swift in Sources */,
+				ADBA2C5726C31E8B0011CA49 /* BackgroundMeshComponent.swift in Sources */,
 				ADDEA34926A8C2050010DA6E /* GameScene.swift in Sources */,
 				ADBA2C4C26C065B40011CA49 /* ScrollMask.swift in Sources */,
 				ADF4610C26BED5CA00FFD368 /* ScrollComponent.swift in Sources */,
 				ADF460F726B71C0600FFD368 /* EntityManager.swift in Sources */,
 				ADF460FC26B888B400FFD368 /* StorageInventoryComponent.swift in Sources */,
+				ADBA2C5A26C326000011CA49 /* MeshComponent.swift in Sources */,
 				ADF460E926B1F17D00FFD368 /* InventoryGestures.swift in Sources */,
 				AD001DB326ACBA8F0010E0FF /* MeshLayerTouches.swift in Sources */,
+				ADBA2C5126C1D6D00011CA49 /* VisualMeshComponent.swift in Sources */,
 				ADDEA35B26AA1ECD0010DA6E /* Cell.swift in Sources */,
 				ADDEA34B26A8C2050010DA6E /* GameViewController.swift in Sources */,
 				ADF460E226B1DE1000FFD368 /* InventoryConfiguration.swift in Sources */,
 				ADDEA36026AB5FDA0010DA6E /* Item.swift in Sources */,
 				ADF460FA26B736B200FFD368 /* GKEntity.swift in Sources */,
 				ADDEA34326A8C2050010DA6E /* AppDelegate.swift in Sources */,
-				AD9EC05026BF3D0200260A57 /* BackgroundNode.swift in Sources */,
+				ADBA2C5526C316860011CA49 /* ItemMoveSystem.swift in Sources */,
 				ADDEA35D26AA22610010DA6E /* Storage.swift in Sources */,
-				ADF4611026BF336F00FFD368 /* NewScrollNode.swift in Sources */,
+				ADF4611026BF336F00FFD368 /* ScrollNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,8 +22,9 @@ class GameScene: SKScene {
         
         if let storage = inventory.component(ofType: StorageInventoryComponent.self) {
             let sword = Item(id: 2, size: EInventorySetting.itemSize, name: "Sword")
+            let shield = Item(id: 3, size: EInventorySetting.itemSize, name: "Shield")
             
-            storage.add(item: sword)
+            storage.add(items: [sword, shield])
         }
     }
     

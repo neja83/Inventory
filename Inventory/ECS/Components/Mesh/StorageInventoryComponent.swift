@@ -8,17 +8,16 @@
 import Foundation
 import GameplayKit
 
+
+/// Working with Items suchs as "adding", "delete"
 class StorageInventoryComponent: GKComponent {
     
-    var data: [Item] = []
+    var data: [Item]
     
     private var mesh: MeshComponent?
     
-    init(items: [Item]?) {
-        if let newData = items {
-            self.data = newData
-        }
-        
+    init(items: [Item] = []) {
+        self.data = items
         super.init()
     }
     
@@ -28,24 +27,19 @@ class StorageInventoryComponent: GKComponent {
         }
     }
     
-    func add(item: Item) {
-        data.append(item)
-        
-        mesh?.add(item: item)
-    }
-    
+    /// Add item on inventory
+    /// Use only this method for add new Items in inventory
     func add(items: [Item]) {
         for item in items {
             self.add(item: item)
         }
     }
     
-    func delete(item: Item) {
-        if let index = data.firstIndex(of: item) {
-            data.remove(at: index)
-        }
+    private func add(item: Item) {
+        data.append(item)
+        
+        mesh?.put(item: item)
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

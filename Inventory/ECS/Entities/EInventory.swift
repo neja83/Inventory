@@ -13,33 +13,41 @@ class EInventory: GKEntity {
     init(defaultSize: InventorySize) {
         super.init()
         
+        // Calculate size in points
+        let frameSize = calculateFrameSize(for: defaultSize)
         let realSize = calculateRealSize(for: defaultSize)
         
         // Components
-        let visulComponent = VisualComponent( size: realSize, radius: EInventorySetting.radius,color: EInventorySetting.bodyColor)
-        let meshComponent  = MeshComponent(inventorySize: defaultSize)
-        let scrollComponent = ScrollComponent()
-        let storage = StorageInventoryComponent(items: nil)
-        let controlPanel = ControlPanelComponent(size: CGSize(width: 60, height: 30))
+        let visulComponent = VisualComponent( size: frameSize, radius: EInventorySetting.radius,color: EInventorySetting.bodyColor)
+        let backgroundMeshComponent = BackgroundMeshComponent(size: realSize)
+        let meshComponent    = MeshComponent(size: defaultSize)
+        let storageComponent = StorageInventoryComponent()
+        let scrollComponent  = ScrollComponent()
         
         // Regestry of components
         self.addComponent(visulComponent)
+        self.addComponent(backgroundMeshComponent)
         self.addComponent(meshComponent)
+        self.addComponent(storageComponent)
         self.addComponent(scrollComponent)
-        self.addComponent(storage)
-        self.addComponent(controlPanel)
-        
-        // Component settings
-        controlPanel.action = meshComponent.sort
     }
     
-    func calculateRealSize(for size: InventorySize) -> CGSize {
+    private func calculateFrameSize(for size: InventorySize) -> CGSize {
         let itemSize = EInventorySetting.itemSize
         let columns =  size.columns <= EInventorySetting.maxMeshSize.columns ? size.columns : EInventorySetting.maxMeshSize.columns
         let lines = size.lines <= EInventorySetting.maxMeshSize.lines ? size.lines : EInventorySetting.maxMeshSize.lines
         
         let width = CGFloat(columns) * itemSize.width + EInventorySetting.padding * CGFloat((columns + 1))
-        let height = CGFloat(lines) * itemSize.width + EInventorySetting.padding * CGFloat((lines + 1))
+        let height = CGFloat(lines) * itemSize.height + EInventorySetting.padding * CGFloat((lines + 1))
+        
+        return CGSize(width: width, height: height)
+    }
+    
+    private func calculateRealSize(for size: InventorySize) -> CGSize {
+        let itemSize = EInventorySetting.itemSize
+        
+        let width = CGFloat(size.columns) * itemSize.width + EInventorySetting.padding * CGFloat((size.columns + 1))
+        let height = CGFloat(size.lines) * itemSize.height + EInventorySetting.padding * CGFloat((size.lines + 1))
         
         return CGSize(width: width, height: height)
     }
@@ -62,4 +70,3 @@ struct EInventorySetting {
     static let padding: CGFloat = 0
     static let scrollMaskPadding: CGFloat = 5
 }
-

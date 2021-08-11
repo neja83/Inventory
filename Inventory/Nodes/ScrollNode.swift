@@ -8,21 +8,21 @@
 import Foundation
 import GameplayKit
 
-class NewScrollNode: SKShapeNode {
+class ScrollNode: SKShapeNode {
     
-    let background: MeshBackground
+    let background: BackgroundNode
     let frameSize: CGSize
     private var lastPosition: CGPoint?
     
-    init(size: CGSize, background: MeshBackground) {
+    init(size: CGSize, background: BackgroundNode) {
         self.background = background 
         frameSize = size
         super.init()
         
         self.selfSetup()
-        self.setupMasks()
+//        self.setupMasks()
     
-        addChild(background)
+//        addChild(background)
         // Default background position
         self.background.position = CGPoint(x: self.background.frame.size.width/2 - self.frameSize.width/2, y: 0)
     }
@@ -50,6 +50,7 @@ class NewScrollNode: SKShapeNode {
     
     private func calculatePosition(position: CGPoint)  {
         let scrollNodeSize = self.background.frame.size
+        print(scrollNodeSize)
         
         if let lastPoint = lastPosition {
             switch lastPoint.x > position.x {
@@ -71,7 +72,7 @@ class NewScrollNode: SKShapeNode {
     }
 }
 
-extension NewScrollNode {
+extension ScrollNode {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
