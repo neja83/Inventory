@@ -8,23 +8,15 @@
 import Foundation
 import GameplayKit
 
-protocol AcrionsComponent {
-    func onClick()
-}
-
-class ControlPanelComponent: GKComponent, AcrionsComponent {
+class ControlPanelComponent: GKComponent {
     
-    typealias Sort = (() -> Void)
+//    typealias Sort = (() -> Void)
     
-    public var button: SKShapeNode
+    public var button: ButtonNode
     private var position: ControlPanelPosition
     
-    public var action: Sort?
-    
     init(size: CGSize, position: ControlPanelPosition = .TOP) {
-        self.button = SKShapeNode(rectOf: size, cornerRadius: EInventorySetting.radius)
-        self.button.name = "Control panel"
-        self.button.fillColor = .green
+        self.button = ButtonNode(size: size)
         self.position = position
         super.init()
     }
@@ -32,7 +24,7 @@ class ControlPanelComponent: GKComponent, AcrionsComponent {
     override func didAddToEntity() {
         if let node = entity?.component(ofType: VisualComponent.self)?.node {
             let nodeSize = node.calculateAccumulatedFrame()
-            let selfSize = button.calculateAccumulatedFrame()
+            let selfSize = button.frame.size
             
             var panelPosition: CGPoint = CGPoint(x: 0, y: 0)
             
@@ -47,12 +39,6 @@ class ControlPanelComponent: GKComponent, AcrionsComponent {
             button.position = panelPosition
             button.zPosition = node.zPosition + 5
             node.addChild(button)
-        }
-    }
-    
-    public func onClick() {
-        if let complition = self.action {
-            complition()
         }
     }
     

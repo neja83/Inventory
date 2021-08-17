@@ -26,6 +26,13 @@ class GameScene: SKScene {
             
             storage.add(items: [sword, shield])
         }
+        
+        let targetNode = Cell(size: EInventorySetting.itemSize, radius: 2, type: .outer, index: 78)
+        targetNode.position = CGPoint(x: 0, y: 200 )
+//        addChild(targetNode)
+        if let outerRegistr = inventory.component(ofType: OuterCellsComponent.self) {
+            outerRegistr.registry(cell: targetNode)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -36,6 +43,7 @@ class GameScene: SKScene {
         let nodes = self.nodes(at: position)
         
         for node in nodes {
+//            print(node.name, node.zPosition)
             node.touchesBegan(touches, with: event)
         }
     }

@@ -23,6 +23,9 @@ class EInventory: GKEntity {
         let meshComponent    = MeshComponent(size: defaultSize)
         let storageComponent = StorageInventoryComponent()
         let scrollComponent  = ScrollComponent()
+        let controlPanel = ControlPanelComponent(size: CGSize(width: 50, height: 20))
+        let lockComponent = LockComponent()
+        let outerCells = OuterCellsComponent()
         
         // Regestry of components
         self.addComponent(visulComponent)
@@ -30,6 +33,11 @@ class EInventory: GKEntity {
         self.addComponent(meshComponent)
         self.addComponent(storageComponent)
         self.addComponent(scrollComponent)
+        self.addComponent(controlPanel)
+        self.addComponent(lockComponent)
+        self.addComponent(outerCells)
+        
+        controlPanel.button.onClick = meshComponent.sort
     }
     
     private func calculateFrameSize(for size: InventorySize) -> CGSize {
@@ -69,4 +77,10 @@ struct EInventorySetting {
     static let maxMeshSize: InventorySize = InventorySize(lines: 3, columns: 3)
     static let padding: CGFloat = 0
     static let scrollMaskPadding: CGFloat = 5
+    
+    // z Position's
+    static let zeroLayer: CGFloat = 5
+    static let firstLayer: CGFloat = 10
+    static let seconLayer: CGFloat = 15
+    static let thirdLayer: CGFloat = 30
 }

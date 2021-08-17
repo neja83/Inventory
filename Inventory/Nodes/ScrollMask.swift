@@ -16,9 +16,9 @@ class ScrollMasck: SKShapeNode {
         let rect = CGRect(origin: CGPoint(x: -size.width/2, y: -size.height/2), size: size)
         self.path = CGPath(rect: rect, transform: .none)
         
-        self.strokeColor = .blue
-        self.fillColor = .blue
-        self.zPosition = 10
+        self.strokeColor = .black
+        self.fillColor = .black
+        self.zPosition = EInventorySetting.thirdLayer
         
         self.name = "Mask node"
     }

@@ -11,10 +11,13 @@
 		AD001DB526AF5DBF0010E0FF /* MeshLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD001DB426AF5DBF0010E0FF /* MeshLayer.swift */; };
 		AD9EC04E26BF3A6D00260A57 /* ItemNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EC04D26BF3A6D00260A57 /* ItemNode.swift */; };
 		ADBA2C4C26C065B40011CA49 /* ScrollMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C4B26C065B40011CA49 /* ScrollMask.swift */; };
-		ADBA2C5126C1D6D00011CA49 /* VisualMeshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C5026C1D6D00011CA49 /* VisualMeshComponent.swift */; };
-		ADBA2C5526C316860011CA49 /* ItemMoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C5426C316860011CA49 /* ItemMoveSystem.swift */; };
 		ADBA2C5726C31E8B0011CA49 /* BackgroundMeshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C5626C31E8B0011CA49 /* BackgroundMeshComponent.swift */; };
 		ADBA2C5A26C326000011CA49 /* MeshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C5926C326000011CA49 /* MeshComponent.swift */; };
+		ADBA2C5C26C4659A0011CA49 /* LockComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C5B26C4659A0011CA49 /* LockComponent.swift */; };
+		ADBA2C5E26C471160011CA49 /* GKEntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C5D26C471160011CA49 /* GKEntityExtension.swift */; };
+		ADBA2C6026C47D070011CA49 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C5F26C47D070011CA49 /* ButtonNode.swift */; };
+		ADBA2C6226C5C0990011CA49 /* OuterCellsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C6126C5C0990011CA49 /* OuterCellsComponent.swift */; };
+		ADBA2C6426C5C8E80011CA49 /* ItemsMoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA2C6326C5C8E80011CA49 /* ItemsMoveSystem.swift */; };
 		ADDEA34326A8C2050010DA6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDEA34226A8C2050010DA6E /* AppDelegate.swift */; };
 		ADDEA34526A8C2050010DA6E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = ADDEA34426A8C2050010DA6E /* GameScene.sks */; };
 		ADDEA34726A8C2050010DA6E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = ADDEA34626A8C2050010DA6E /* Actions.sks */; };
@@ -45,10 +48,13 @@
 		AD001DB426AF5DBF0010E0FF /* MeshLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshLayer.swift; sourceTree = "<group>"; };
 		AD9EC04D26BF3A6D00260A57 /* ItemNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNode.swift; sourceTree = "<group>"; };
 		ADBA2C4B26C065B40011CA49 /* ScrollMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollMask.swift; sourceTree = "<group>"; };
-		ADBA2C5026C1D6D00011CA49 /* VisualMeshComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualMeshComponent.swift; sourceTree = "<group>"; };
-		ADBA2C5426C316860011CA49 /* ItemMoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMoveSystem.swift; sourceTree = "<group>"; };
 		ADBA2C5626C31E8B0011CA49 /* BackgroundMeshComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMeshComponent.swift; sourceTree = "<group>"; };
 		ADBA2C5926C326000011CA49 /* MeshComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshComponent.swift; sourceTree = "<group>"; };
+		ADBA2C5B26C4659A0011CA49 /* LockComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockComponent.swift; sourceTree = "<group>"; };
+		ADBA2C5D26C471160011CA49 /* GKEntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKEntityExtension.swift; sourceTree = "<group>"; };
+		ADBA2C5F26C47D070011CA49 /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
+		ADBA2C6126C5C0990011CA49 /* OuterCellsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuterCellsComponent.swift; sourceTree = "<group>"; };
+		ADBA2C6326C5C8E80011CA49 /* ItemsMoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsMoveSystem.swift; sourceTree = "<group>"; };
 		ADDEA33F26A8C2050010DA6E /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDEA34226A8C2050010DA6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADDEA34426A8C2050010DA6E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -92,6 +98,7 @@
 			children = (
 				AD001DB226ACBA8F0010E0FF /* MeshLayerTouches.swift */,
 				ADF460E826B1F17D00FFD368 /* InventoryGestures.swift */,
+				ADBA2C5D26C471160011CA49 /* GKEntityExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -107,10 +114,11 @@
 		ADBA2C4D26C1D2BC0011CA49 /* Mesh */ = {
 			isa = PBXGroup;
 			children = (
-				ADBA2C5026C1D6D00011CA49 /* VisualMeshComponent.swift */,
 				ADBA2C5626C31E8B0011CA49 /* BackgroundMeshComponent.swift */,
 				ADBA2C5926C326000011CA49 /* MeshComponent.swift */,
 				ADF460FB26B888B400FFD368 /* StorageInventoryComponent.swift */,
+				ADBA2C5B26C4659A0011CA49 /* LockComponent.swift */,
+				ADBA2C6126C5C0990011CA49 /* OuterCellsComponent.swift */,
 			);
 			path = Mesh;
 			sourceTree = "<group>";
@@ -123,6 +131,7 @@
 				ADBA2C4B26C065B40011CA49 /* ScrollMask.swift */,
 				ADDEA35A26AA1ECD0010DA6E /* Cell.swift */,
 				ADDEA35F26AB5FDA0010DA6E /* Item.swift */,
+				ADBA2C5F26C47D070011CA49 /* ButtonNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -217,7 +226,7 @@
 		ADF460F526B71BDC00FFD368 /* Systems */ = {
 			isa = PBXGroup;
 			children = (
-				ADBA2C5426C316860011CA49 /* ItemMoveSystem.swift */,
+				ADBA2C6326C5C8E80011CA49 /* ItemsMoveSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -310,30 +319,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADDEA35826AA067D0010DA6E /* Inventory.swift in Sources */,
+				ADBA2C6226C5C0990011CA49 /* OuterCellsComponent.swift in Sources */,
 				ADF460F026B3441D00FFD368 /* VisualComponent.swift in Sources */,
 				ADF4610026B9D81F00FFD368 /* ControlPanelComponent.swift in Sources */,
 				ADF4610226BB1E1F00FFD368 /* ScrollNodeOld.swift in Sources */,
 				AD001DB526AF5DBF0010E0FF /* MeshLayer.swift in Sources */,
 				ADF460FE26B890E300FFD368 /* BackgroundNode.swift in Sources */,
+				ADBA2C5E26C471160011CA49 /* GKEntityExtension.swift in Sources */,
 				ADF460EE26B341FB00FFD368 /* EInventory.swift in Sources */,
 				AD9EC04E26BF3A6D00260A57 /* ItemNode.swift in Sources */,
 				ADBA2C5726C31E8B0011CA49 /* BackgroundMeshComponent.swift in Sources */,
 				ADDEA34926A8C2050010DA6E /* GameScene.swift in Sources */,
 				ADBA2C4C26C065B40011CA49 /* ScrollMask.swift in Sources */,
 				ADF4610C26BED5CA00FFD368 /* ScrollComponent.swift in Sources */,
+				ADBA2C6026C47D070011CA49 /* ButtonNode.swift in Sources */,
 				ADF460F726B71C0600FFD368 /* EntityManager.swift in Sources */,
 				ADF460FC26B888B400FFD368 /* StorageInventoryComponent.swift in Sources */,
 				ADBA2C5A26C326000011CA49 /* MeshComponent.swift in Sources */,
 				ADF460E926B1F17D00FFD368 /* InventoryGestures.swift in Sources */,
 				AD001DB326ACBA8F0010E0FF /* MeshLayerTouches.swift in Sources */,
-				ADBA2C5126C1D6D00011CA49 /* VisualMeshComponent.swift in Sources */,
+				ADBA2C6426C5C8E80011CA49 /* ItemsMoveSystem.swift in Sources */,
 				ADDEA35B26AA1ECD0010DA6E /* Cell.swift in Sources */,
 				ADDEA34B26A8C2050010DA6E /* GameViewController.swift in Sources */,
 				ADF460E226B1DE1000FFD368 /* InventoryConfiguration.swift in Sources */,
 				ADDEA36026AB5FDA0010DA6E /* Item.swift in Sources */,
+				ADBA2C5C26C4659A0011CA49 /* LockComponent.swift in Sources */,
 				ADF460FA26B736B200FFD368 /* GKEntity.swift in Sources */,
 				ADDEA34326A8C2050010DA6E /* AppDelegate.swift in Sources */,
-				ADBA2C5526C316860011CA49 /* ItemMoveSystem.swift in Sources */,
 				ADDEA35D26AA22610010DA6E /* Storage.swift in Sources */,
 				ADF4611026BF336F00FFD368 /* ScrollNode.swift in Sources */,
 			);

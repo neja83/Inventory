@@ -68,15 +68,6 @@ class Cell: SKSpriteNode, ExternalPosition {
     }
     private(set) var type: CellType
     
-    // Change item position if has it
-    override var position: CGPoint {
-        didSet {
-            if let savedItem = item {
-                savedItem.position = position
-            }
-        }
-    }
-    
     // TODO private and getter for this
     var isEmpty:  Bool = true
     var isSelect: Bool = false {
@@ -121,8 +112,60 @@ class Cell: SKSpriteNode, ExternalPosition {
     }
 }
 
+extension Cell {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !(isEmpty) {
+            if let backNode = self.parent as? BackgroundNode {
+                if let moveSystem = backNode.component?.entity?.component(ofType: BackgroundMeshComponent.self) {
+                    if moveSystem.fromCell == nil {
+                        moveSystem.setFrom(cell: self)
+                        self.onSelect()
+                    }
+                }
+            }
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let backNode = self.parent as? BackgroundNode {
+            if let moveSystem = backNode.component?.entity?.component(ofType: BackgroundMeshComponent.self) {
+                if let fromCell = moveSystem.fromCell {
+                    
+                    if let toCell = moveSystem.toCell {
+                        // Not go back
+                        if !fromCell.isEqual(to: self) {
+                            if !toCell.isEqual(to: self) {
+                                toCell.onHover()
+                                if !self.isSelect {
+                                    self.onHover()
+                                }
+                                moveSystem.setTo(cell: self)
+                            }
+                        } else {
+                            toCell.onHover()
+                            moveSystem.setTo(cell: nil)
+                        }
+                    } else {
+                        // First cell
+                        if !self.isEqual(to: fromCell) {
+                            self.onHover()
+                            moveSystem.setTo(cell: self)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if self.isSelect {
+            self.onSelect()
+        }
+    }
+}
 
 enum CellType: String {
-    case Inner
-    case Outer
+    case inner
+    case outer
 }

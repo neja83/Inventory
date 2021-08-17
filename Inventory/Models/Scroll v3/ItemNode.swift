@@ -52,10 +52,6 @@ class ItemNode: SKShapeNode, ExternalPosition {
         addChild(label)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("item")
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

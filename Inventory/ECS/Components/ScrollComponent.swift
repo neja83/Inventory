@@ -8,9 +8,19 @@
 import Foundation
 import GameplayKit
 
-class ScrollComponent: GKComponent {
+protocol BlockedComponent {
+    var disabled: Bool { get }
+    func setDisabled(_ value : Bool)
+}
+
+class ScrollComponent: GKComponent, BlockedComponent {
     
     var scroll: ScrollNode?
+    var disabled: Bool = false {
+        didSet {
+            scroll?.disabled = self.disabled
+        }
+    }
     
     override init() {
         super.init()
@@ -29,6 +39,10 @@ class ScrollComponent: GKComponent {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setDisabled(_ value: Bool) {
+        self.disabled = value
     }
     
 }

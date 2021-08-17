@@ -11,7 +11,6 @@ import GameplayKit
 class MeshComponent: GKComponent {
     
     private var background: BackgroundNode?
-    
     private let inventorySize: InventorySize
     private var mesh: [Cell] = []
     
@@ -22,7 +21,6 @@ class MeshComponent: GKComponent {
     
     override func didAddToEntity() {
         if let backgroundMesh = entity?.component(ofType: BackgroundMeshComponent.self) {
-            backgroundMesh.node.meshDelegate = self
             
             self.background = backgroundMesh.node
             self.setup()
@@ -30,11 +28,9 @@ class MeshComponent: GKComponent {
     }
     
     public func put(item: Item) {
-        print(item)
         let cell = self.getFirstCell()
         cell.link(with: item)
         item.position = .zero
-        item.zPosition = 10
             
         cell.addChild(item)
     }
@@ -57,7 +53,7 @@ class MeshComponent: GKComponent {
     
     /// ToDo  REFACTORING THIS!
     private func addNewCell() -> Cell {
-        Cell(size: CGSize(width: 0, height: 0), radius: 0, type: .Inner, index: 555)
+        Cell(size: CGSize(width: 0, height: 0), radius: 0, type: .inner, index: 555)
     }
     
     required init?(coder: NSCoder) {
@@ -66,23 +62,10 @@ class MeshComponent: GKComponent {
 }
 
 
-protocol Mesh {
-    func show(item: Item, in cell: Cell)
-    func move(from firstCell: Cell, to secondCell: Cell)
-    func dropHoverCell()
-    func dropSelectCell()
-}
-
-extension MeshComponent: Mesh {
-    
-    // MARK: - Item actions
-    public func show(item: Item, in cell: Cell) {
-        item.position = .zero
-        cell.addChild(item)
-    }
+extension MeshComponent {
     
     func dropSelectCell() {
-        if let meshOfCell = entity?.component(ofType: MeshComponentOld.self) {
+        if let meshOfCell = entity?.component(ofType: MeshComponent.self) {
             for cell in meshOfCell.mesh.filter({$0.isSelect}) {
                 cell.onSelect()
             }
@@ -90,45 +73,10 @@ extension MeshComponent: Mesh {
     }
 
     func dropHoverCell() {
-        if let meshOfCell = entity?.component(ofType: MeshComponentOld.self) {
+        if let meshOfCell = entity?.component(ofType: MeshComponent.self) {
             for cell in meshOfCell.mesh.filter({ $0.isHover }) {
                 cell.onHover()
             }
-        }
-    }
-
-    public func move(from firstCell: Cell, to secondCell: Cell) {
-
-        let firstItem = extract(from: firstCell)
-        let secondItem = extract(from: secondCell)
-
-        if let item = firstItem {
-            put(item: item, in: secondCell)
-        }
-
-        if let item = secondItem {
-            put(item: item, in: firstCell)
-        }
-    }
-
-    private func put(item: Item, in cell: Cell) {
-        if (cell.isEmpty) {
-            cell.link(with: item)
-            item.removeFromParent()
-
-            item.position = .zero
-            item.zPosition = 5
-
-            cell.addChild(item)
-        }
-    }
-
-    private func extract(from cell: Cell) -> Item? {
-        if let item = cell.item {
-            cell.unLink()
-            return item
-        } else {
-            return nil
         }
     }
 }
@@ -166,10 +114,10 @@ extension MeshComponent {
     private func addCell(at position: CGPoint, with cellSize: CGSize, index: Int) {
         guard let backroundMesh = self.background else { return }
         
-        let cell = Cell(size: cellSize, radius: 2, type: .Inner, index: index)
+        let cell = Cell(size: cellSize, radius: 2, type: .inner, index: index)
          
         cell.position = CGPoint(x: position.x, y: position.y)
-        cell.zPosition = backroundMesh.zPosition + 5
+        cell.zPosition = EInventorySetting.firstLayer
         
         backroundMesh.addChild(cell)
         add(cell: cell)
@@ -183,5 +131,38 @@ extension MeshComponent {
         let height = CGFloat(size.lines) * itemSize.height + EInventorySetting.padding * CGFloat((size.lines + 1))
         
         return CGSize(width: width, height: height)
+    }
+}
+
+
+extension MeshComponent {
+    public func sort(){
+        self.mesh = self.mesh.sorted { second, first in
+            if (first.isEmpty && !second.isEmpty) {
+                
+                let firstPosition = first.position
+                let firstIsHidden = first.isHidden
+                let secondPosition = second.position
+                let secondIsHidden = second.isHidden
+                
+                first.position = secondPosition
+                first.isHidden = secondIsHidden
+                second.position = firstPosition
+                second.isHidden = firstIsHidden
+                
+                return true
+            }
+            if (!first.isEmpty && second.isEmpty) {
+                return false
+            }
+            if (first.isEmpty && second.isEmpty) {
+                return false
+            }
+            return false
+        }
+//        for item in mesh {
+//            print(item.isHidden)
+//        }
+        // TODO sort by item name
     }
 }

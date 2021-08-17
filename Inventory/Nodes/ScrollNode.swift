@@ -12,6 +12,7 @@ class ScrollNode: SKShapeNode {
     
     let background: BackgroundNode
     let frameSize: CGSize
+    var disabled: Bool = false
     private var lastPosition: CGPoint?
     
     init(size: CGSize, background: BackgroundNode) {
@@ -20,11 +21,12 @@ class ScrollNode: SKShapeNode {
         super.init()
         
         self.selfSetup()
-//        self.setupMasks()
+        self.setupMasks()
     
 //        addChild(background)
         // Default background position
         self.background.position = CGPoint(x: self.background.frame.size.width/2 - self.frameSize.width/2, y: 0)
+        self.zPosition = EInventorySetting.firstLayer
     }
     
     private func selfSetup() {
@@ -38,11 +40,11 @@ class ScrollNode: SKShapeNode {
         
         let leftNodeMask = ScrollMasck(size: CGSize(width: EInventorySetting.itemSize.width, height: frameSize.height))
         leftNodeMask.position = CGPoint(x: -frameSize.width/2-leftNodeMask.frame.width/2, y: 0)
-        leftNodeMask.zPosition = 10
+        leftNodeMask.zPosition = EInventorySetting.seconLayer
         
         let rightNodeMask = ScrollMasck(size: CGSize(width: EInventorySetting.itemSize.width, height: frameSize.height))
         rightNodeMask.position = CGPoint(x: frameSize.width/2+rightNodeMask.frame.width/2, y: 0)
-        rightNodeMask.zPosition = 10
+        rightNodeMask.zPosition = EInventorySetting.seconLayer
         
         addChild(leftNodeMask)
         addChild(rightNodeMask)
@@ -50,7 +52,6 @@ class ScrollNode: SKShapeNode {
     
     private func calculatePosition(position: CGPoint)  {
         let scrollNodeSize = self.background.frame.size
-        print(scrollNodeSize)
         
         if let lastPoint = lastPosition {
             switch lastPoint.x > position.x {
@@ -75,13 +76,13 @@ class ScrollNode: SKShapeNode {
 extension ScrollNode {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
+        guard !disabled, let touch = touches.first else { return }
         
         self.lastPosition = touch.location(in: self)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
+        guard !disabled, let touch = touches.first else { return }
         
         let position = touch.location(in: self)
         

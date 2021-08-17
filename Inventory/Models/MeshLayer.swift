@@ -73,7 +73,7 @@ class MeshLayer: SKShapeNode, MeshLayerPresenter {
     }
     
     private func addCell(in position: CGPoint) {
-        let cell = Cell(size: configuration.cellSize, radius: configuration.padding * 2, type: .Inner, index: 1)
+        let cell = Cell(size: configuration.cellSize, radius: configuration.padding * 2, type: .inner, index: 1)
         
         cell.position = CGPoint(x: position.x, y: position.y)
         cell.zPosition = self.zPosition + 5

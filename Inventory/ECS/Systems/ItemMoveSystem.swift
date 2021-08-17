@@ -7,7 +7,3 @@
 
 import Foundation
 import GameplayKit
-
-extension VisualMeshComponent {
-    
-}

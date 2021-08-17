@@ -13,10 +13,11 @@ class EntityManager {
     // MARK: - private
     private let systems: [GKComponentSystem<GKComponent>] = {
         var visualComponentObject = GKComponentSystem(componentClass: VisualComponent.self)
-        var itemMoveSystem = GKComponentSystem(componentClass: VisualMeshComponent.self)
+        var lockInventorySystem = GKComponentSystem(componentClass: LockComponent.self)
+        var itemsMoveSystem = GKComponentSystem(componentClass: BackgroundMeshComponent.self)
         
         // !order
-        return [visualComponentObject, itemMoveSystem]
+        return [visualComponentObject, lockInventorySystem, itemsMoveSystem]
     }()
     private var entities: Set<GKEntity> = Set<GKEntity>()
     

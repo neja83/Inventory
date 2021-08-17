@@ -10,7 +10,8 @@ import GameplayKit
 
 class BackgroundNode: SKShapeNode {
     
-    var meshDelegate: Mesh?
+    var component: BackgroundMeshComponent?
+    var disabled: Bool = false
     private var fromCell: Cell?
     private var toCell: Cell?
     
@@ -54,18 +55,19 @@ extension BackgroundNode {
             
             // Try find cell with item
             for node in tochesNodes {
-                
+                node.touchesMoved(touches, with: event)
                 if let cell = node as? Cell {
                     
                     if (!cell.isEmpty) {
-                        cell.onSelect()
                         
-                        self.fromCell = cell
-                        if let item = self.fromCell?.item {
+                        if let item = cell.item {
                             item.removeFromParent()
                             item.position = position
-                            item.zPosition = 10
+                            item.zPosition = EInventorySetting.thirdLayer
                             addChild(item)
+                            
+                            // Lock scroll component
+                            scrollEventsLock()
                         }
                     }
                 }
@@ -79,66 +81,53 @@ extension BackgroundNode {
         // Position of touch
         let position = touch.location(in: self)
         
-        guard touches.count == 1, let movedCell = self.fromCell else { return }
+        guard touches.count == 1, let movedCell = self.component?.fromCell else { return }
         
+        // Set position for moved item
         movedCell.item?.position = position
-        // Try find cell
-        for node in nodes(at: position) {
-            
-            if let cell = node as? Cell {
-    
-                if !(cell.isHover) {
-                    if let lastToCell = toCell {
-                        lastToCell.onHover()
-                    }
-                    
-                    cell.onHover()
-                    self.toCell = cell
-                }
-           
-                if let lastToCell = self.toCell, let oldCell = self.fromCell, oldCell.isEqual(to: cell) {
-                    lastToCell.onHover()
-                    self.toCell = nil
-                }
-                
-            }
-        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let oldCell = self.fromCell else { return }
         
-        if let newCell = self.toCell {
-            meshDelegate?.move(from: oldCell, to: newCell)
+        if let _ = self.component?.toCell {
+            self.component?.setNeedMove(true)
         } else {
-            if let item = oldCell.item {
-                item.removeFromParent()
-                oldCell.addChild(item)
-                item.position = .zero
-            }
+            self.component?.rollBack()
         }
         
-        meshDelegate?.dropHoverCell()
-        meshDelegate?.dropSelectCell()
-        self.fromCell = nil
-        self.toCell   = nil
+        clearBackround()
+        scrollEventsUnLock()
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-    
-        // TODO - add actions for toCell scenario
         
-        if let oldCell = self.fromCell {
-            if let item = oldCell.item {
-                item.removeFromParent()
-                oldCell.addChild(item)
-                item.position = .zero
+        self.component?.rollBack()
+        
+        clearBackround()
+        scrollEventsUnLock()
+    }
+    
+    private func scrollEventsLock() {
+        if let parentComponent = self.component {
+            if let locker = parentComponent.entity?.component(ofType: LockComponent.self) {
+                locker.lock()
             }
         }
-        
-        meshDelegate?.dropHoverCell()
-        meshDelegate?.dropSelectCell()
-        self.fromCell = nil
-        self.toCell   = nil
+    }
+    
+    private func scrollEventsUnLock() {
+        if let parentComponent = self.component {
+            if let locker = parentComponent.entity?.component(ofType: LockComponent.self) {
+                locker.unLock()
+            }
+        }
+    }
+    
+    private func clearBackround() {
+        if let parentComponent = self.component {
+            if let meshComponent = parentComponent.entity?.component(ofType: MeshComponent.self) {
+                meshComponent.dropHoverCell()
+            }
+        }
     }
 }

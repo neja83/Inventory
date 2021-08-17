@@ -66,7 +66,6 @@ class Storage {
         }
     }
     
-    #warning("may be it is insecure operation!")
     func extract(from cell: Cell) -> Item? {
         if let item = cell.item {
             cell.unLink()
