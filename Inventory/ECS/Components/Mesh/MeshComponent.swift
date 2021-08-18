@@ -12,7 +12,7 @@ class MeshComponent: GKComponent {
     
     private var background: BackgroundNode?
     private let inventorySize: InventorySize
-    private var mesh: [Cell] = []
+    private(set) var mesh: [Cell] = []
     
     init(size: InventorySize) {
         self.inventorySize = size
@@ -118,6 +118,7 @@ extension MeshComponent {
          
         cell.position = CGPoint(x: position.x, y: position.y)
         cell.zPosition = EInventorySetting.firstLayer
+        cell.component = self
         
         backroundMesh.addChild(cell)
         add(cell: cell)

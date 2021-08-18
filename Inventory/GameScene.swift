@@ -28,7 +28,8 @@ class GameScene: SKScene {
         }
         
         let targetNode = Cell(size: EInventorySetting.itemSize, radius: 2, type: .outer, index: 78)
-        targetNode.position = CGPoint(x: 0, y: 200 )
+        targetNode.position = CGPoint(x: 0, y: -200 )
+        targetNode.name = "outer node"
 //        addChild(targetNode)
         if let outerRegistr = inventory.component(ofType: OuterCellsComponent.self) {
             outerRegistr.registry(cell: targetNode)

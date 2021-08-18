@@ -17,11 +17,14 @@ class OuterCellsComponent: GKComponent {
         
         if let visual = self.entity?.component(ofType: VisualComponent.self)?.node {
             visual.addChild(cell)
+            cell.component = self
         }
     }
     
     func remove(cell: Cell) -> Cell? {
         if let index = self.cells.firstIndex(of: cell) {
+            cell.component = nil
+            cell.removeFromParent()
             return self.cells.remove(at: index)
         }
         return nil

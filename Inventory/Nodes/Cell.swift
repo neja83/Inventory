@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import GameplayKit
 import SpriteKit
 
 protocol ExternalPosition {
@@ -14,6 +15,9 @@ protocol ExternalPosition {
 
 class Cell: SKSpriteNode, ExternalPosition {
     
+    var component:  GKComponent?
+    
+    // MARK: - body
     private var visualNode: SKShapeNode
     
     // MARK: - colors
@@ -85,6 +89,7 @@ class Cell: SKSpriteNode, ExternalPosition {
         visualNode = SKShapeNode(rectOf: size, cornerRadius: radius)
         self.type = type
         super.init(texture: nil, color: .clear, size: size)
+        
         self.name = "Cell \(index)"
         self.visualNode.strokeColor = colorWithoutItem
         self.addChild(visualNode)
@@ -115,12 +120,29 @@ class Cell: SKSpriteNode, ExternalPosition {
 extension Cell {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !(isEmpty) {
-            if let backNode = self.parent as? BackgroundNode {
-                if let moveSystem = backNode.component?.entity?.component(ofType: BackgroundMeshComponent.self) {
+        
+        if let selfItem = self.item {
+            if let parentComponent = self.component {
+                if let moveSystem = parentComponent.entity?.component(ofType: BackgroundMeshComponent.self) {
                     if moveSystem.fromCell == nil {
                         moveSystem.setFrom(cell: self)
                         self.onSelect()
+                    }
+                    if (self.type == .outer) {
+                        if let background = parentComponent.entity?.component(ofType: BackgroundMeshComponent.self) {
+                            let backPosition = background.node.position
+                            let selfPosition = self.position
+                            let itemPosition = CGPoint(x: selfPosition.x - backPosition.x, y: selfPosition.y - backPosition.y)
+                                
+                            selfItem.removeFromParent()
+                            background.node.addChild(selfItem)
+                            selfItem.position = itemPosition
+                            
+                            
+                            if let locker = parentComponent.entity?.component(ofType: LockComponent.self) {
+                                locker.lock()
+                            }
+                        }
                     }
                 }
             }
@@ -128,10 +150,10 @@ extension Cell {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let backNode = self.parent as? BackgroundNode {
-            if let moveSystem = backNode.component?.entity?.component(ofType: BackgroundMeshComponent.self) {
+
+        if let parentComponent = self.component {
+            if let moveSystem = parentComponent.entity?.component(ofType: BackgroundMeshComponent.self) {
                 if let fromCell = moveSystem.fromCell {
-                    
                     if let toCell = moveSystem.toCell {
                         // Not go back
                         if !fromCell.isEqual(to: self) {
